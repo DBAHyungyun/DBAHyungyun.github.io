@@ -1,0 +1,8 @@
+---
+import '../styles/global.css';
+import {path} from '../lib/paths';
+const {title='김형윤 · Database Engineer',description='데이터베이스 운영과 성능, 문제 해결의 기록',article,date}=Astro.props;
+const canonical=new URL(Astro.url.pathname,Astro.site);
+const live=import.meta.env.PUBLIC_PUBLISH==='true';
+---
+<!doctype html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/><meta name="robots" content={live?'index,follow':'noindex,nofollow'}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:type" content={article?'article':'website'}/><link rel="alternate" type="application/rss+xml" title="김형윤 기술 블로그" href={path('rss.xml')}/>{article&&<script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'BlogPosting',headline:title,datePublished:date,author:{'@type':'Person',name:'김형윤'},mainEntityOfPage:canonical.href}).replace(/</g,'\u003c')}/>}</head><body><a class="skip" href="#main">본문으로</a><header><a class="brand" href={path()}>HYUNGYUN<span> / DATABASE ENGINEER</span></a><nav aria-label="주 메뉴"><a href={path('blog/')}>글</a><a href={path('projects/')}>프로젝트</a><a href={path('about/')}>소개</a><a href={path('resume/')}>이력서</a></nav></header><main id="main"><slot/></main><footer><span>© {new Date().getFullYear()} 김형윤 · 읽고, 실험하고, 기록합니다.</span><a href="https://www.linkedin.com/in/hyungyun-kim-a7a8b8389/">LinkedIn ↗</a><a href="https://hyungyun.tistory.com/">Tistory ↗</a></footer></body></html>

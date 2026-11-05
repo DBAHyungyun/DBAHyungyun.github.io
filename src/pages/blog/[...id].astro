@@ -1,0 +1,6 @@
+---
+import Layout from '../../layouts/Layout.astro';import {getCollection,render} from 'astro:content';import {path} from '../../lib/paths';
+export async function getStaticPaths(){return(await getCollection('blog')).map(post=>({params:{id:post.id},props:{post}}));}
+const {post}=Astro.props;const {Content}=await render(post);
+---
+<Layout title={post.data.title} description={post.data.description} article date={post.data.date}><article class="prose"><a href={path('blog/')}>← 모든 글</a><div class="pagehead"><div class="meta">{post.data.category} · {post.data.date.slice(0,10)}</div><h1>{post.data.title}</h1><a class="meta" href={post.data.source}>티스토리 원문 ↗</a></div><Content/></article></Layout>

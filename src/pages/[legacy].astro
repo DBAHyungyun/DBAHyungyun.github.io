@@ -1,0 +1,6 @@
+---
+import rows from '../../migration/url-map.json';import{path}from '../lib/paths';
+export function getStaticPaths(){return rows.filter(r=>r.numericSource).map(r=>({params:{legacy:r.numericSource.split('/').pop()},props:{row:r}}));}
+const target=path(Astro.props.row.newPath);const canonical=new URL(target,Astro.site);
+---
+<!doctype html><html lang="ko"><head><meta charset="utf-8"/><title>이전된 글</title><meta http-equiv="refresh" content={`0;url=${target}`}/><link rel="canonical" href={canonical}/><meta name="robots" content="noindex"/></head><body><a href={target}>이전된 글로 이동</a></body></html>
