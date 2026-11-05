@@ -1,6 +1,9 @@
 {
-  "htmlPages": 143,
-  "posts": 64,
+  "htmlPages": 147,
+  "posts": 66,
   "errors": [],
-  "warnings": []
+  "warnings": [
+    "tistory-3357f25a1af9bbe5: 원본 백업 없어 코드 대조 생략",
+    "tistory-3eecd8705e805f49: 원본 백업 없어 코드 대조 생략"
+  ]
 }

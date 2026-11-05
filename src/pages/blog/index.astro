@@ -1,6 +1,43 @@
 ---
 import Layout from '../../layouts/Layout.astro';import {getCollection} from 'astro:content';import {path} from '../../lib/paths';
-const posts=(await getCollection('blog')).sort((a,b)=>b.data.date.localeCompare(a.data.date));const categories=[...new Set(posts.map(x=>x.data.category))].sort();
+const posts=(await getCollection('blog')).sort((a,b)=>b.data.date.localeCompare(a.data.date)||a.id.localeCompare(b.id));
+const categories=[...new Set(posts.map(x=>x.data.category))].sort();
+const pageSize=10;const pageCount=Math.ceil(posts.length/pageSize);
+const label=(c:string)=>c.replace(/^Database \| SQL \| OS\//,'').replace(/^Cloud\//,'');
 ---
-<Layout title="기술 기록 · 김형윤"><div class="pagehead"><div class="eyebrow">FIELD NOTES</div><h1>기술 기록</h1><p class="muted">개념을 이해하고, 직접 확인한 내용을 남깁니다.</p></div><div class="filters"><input id="search" type="search" placeholder="제목·내용으로 검색" aria-label="글 검색"/><select id="category" aria-label="카테고리"><option value="">모든 카테고리</option>{categories.map(c=><option>{c}</option>)}</select></div><p id="count" class="meta" aria-live="polite">{posts.length}개 글</p>{posts.map(p=><article class="row post" data-search={`${p.data.title} ${p.data.description} ${p.body}`.toLowerCase()} data-category={p.data.category}><div class="meta">{p.data.date.slice(0,10)}</div><div><div class="meta">{p.data.category}</div><h3><a href={path(`blog/${p.id}/`)}>{p.data.title}</a></h3><p class="muted">{p.data.description}</p></div></article>)}</Layout>
-<script>const search=document.querySelector<HTMLInputElement>('#search')!;const category=document.querySelector<HTMLSelectElement>('#category')!;function filter(){let n=0;document.querySelectorAll<HTMLElement>('.post').forEach(el=>{el.hidden=!(el.dataset.search!.includes(search.value.toLowerCase())&&(!category.value||el.dataset.category===category.value));if(!el.hidden)n++;});document.querySelector('#count')!.textContent=`${n}개 글`;}search.addEventListener('input',filter);category.addEventListener('change',filter);</script>
+<Layout title="전체 기술 기록 · 김형윤" description="데이터베이스 기술 기록을 카테고리별로 찾아봅니다.">
+ <div class="pagehead archive-heading"><div class="eyebrow">PERSONAL NOTES</div><h1>전체 기술 기록</h1><p class="muted">일하며 궁금했던 것들을 직접 확인하고 정리합니다.</p></div>
+ <div class="archive-layout">
+  <aside class="archive-sidebar" aria-label="글 카테고리"><h2>카테고리</h2><nav class="category-list" aria-label="카테고리 선택"><a href={path('blog/')} class="category-link" data-category="" aria-current="true"><span>전체 글</span><span class="category-count">{posts.length}</span></a>{categories.map(c=><a href={`${path('blog/')}?category=${encodeURIComponent(c)}`} class="category-link" data-category={c}><span>{label(c)}</span><span class="category-count">{posts.filter(p=>p.data.category===c).length}</span></a>)}</nav></aside>
+  <section class="archive-content" aria-label="글 목록"><div class="archive-search"><label for="search">기록 검색</label><input id="search" type="search" placeholder="제목·내용으로 검색" autocomplete="off"/></div><div class="archive-list-head"><h2 id="selected-category">전체 글</h2><p id="count" class="meta" aria-live="polite">{posts.length}개 글 · 1 / {pageCount} 페이지</p></div><div id="post-list">{posts.map((p,i)=><article class="row post archive-post" hidden={i>=pageSize} data-search={`${p.data.title} ${p.data.description} ${p.body}`.normalize('NFKC').toLowerCase()} data-category={p.data.category}><time class="meta" datetime={p.data.date}>{p.data.date.slice(0,10)}</time><div><div class="meta">{label(p.data.category)}</div><h3><a href={path(`blog/${p.id}/`)}>{p.data.title}</a></h3><p class="muted">{p.data.description}</p></div></article>)}</div><p id="empty-results" class="empty-results" hidden>검색 조건에 맞는 기록이 없습니다.</p><nav id="pagination" class="pagination" aria-label="글 목록 페이지">{Array.from({length:pageCount},(_,i)=><a href={`${path('blog/')}?page=${i+1}`} data-page={i+1} aria-label={`${i+1}페이지`} aria-current={i===0?'page':undefined}>{i+1}</a>)}</nav><noscript><style>.archive-post[hidden]{display:grid!important}#pagination,.archive-search{display:none}</style><p>전체 글을 표시합니다. 검색·카테고리·페이지 구분은 JavaScript를 켜면 사용할 수 있습니다.</p></noscript></section>
+ </div>
+</Layout>
+<script>
+const search=document.querySelector<HTMLInputElement>('#search')!;
+const links=[...document.querySelectorAll<HTMLAnchorElement>('.category-link')];
+const posts=[...document.querySelectorAll<HTMLElement>('.archive-post')];
+const pagination=document.querySelector<HTMLElement>('#pagination')!;
+const count=document.querySelector('#count')!;
+const heading=document.querySelector('#selected-category')!;
+let page=1,category='';const pageSize=10;
+function readURL(){const params=new URL(location.href).searchParams;search.value=params.get('q')||'';category=params.get('category')||'';if(!links.some(a=>a.dataset.category===category))category='';page=Math.max(1,Number.parseInt(params.get('page')||'1',10)||1);}
+function pageURL(n:number){const url=new URL(location.href);url.search='';if(search.value.trim())url.searchParams.set('q',search.value.trim());if(category)url.searchParams.set('category',category);if(n>1)url.searchParams.set('page',String(n));return url.pathname+url.search;}
+function render(historyMode:'push'|'replace'|'none'='replace'){
+ const query=search.value.normalize('NFKC').trim().toLowerCase();
+ const matches=posts.filter(el=>(!category||el.dataset.category===category)&&el.dataset.search!.includes(query));
+ const totalPages=Math.ceil(matches.length/pageSize);page=Math.min(page,Math.max(1,totalPages));
+ posts.forEach(el=>el.hidden=true);matches.slice((page-1)*pageSize,page*pageSize).forEach(el=>el.hidden=false);
+ count.textContent=matches.length?`${matches.length}개 글 · ${page} / ${totalPages} 페이지`:'0개 글';
+ heading.textContent=category?links.find(a=>a.dataset.category===category)!.querySelector('span')!.textContent:'전체 글';
+ links.forEach(a=>{if(a.dataset.category===category)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});
+ document.querySelector<HTMLElement>('#empty-results')!.hidden=matches.length>0;
+ pagination.replaceChildren();pagination.hidden=totalPages<=1;
+ function add(n:number,text:string,label:string){const a=document.createElement('a');a.href=pageURL(n);a.dataset.page=String(n);a.textContent=text;a.setAttribute('aria-label',label);if(n===page&&text===String(n))a.setAttribute('aria-current','page');pagination.append(a);}
+ if(page>1)add(page-1,'← 이전','이전 페이지');for(let n=1;n<=totalPages;n++)add(n,String(n),`${n}페이지`);if(page<totalPages)add(page+1,'다음 →','다음 페이지');
+ if(historyMode!=='none')history[historyMode==='push'?'pushState':'replaceState'](null,'',pageURL(page));
+}
+search.addEventListener('input',()=>{page=1;render();});
+links.forEach(a=>a.addEventListener('click',e=>{if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;e.preventDefault();category=a.dataset.category||'';page=1;render('push');}));
+pagination.addEventListener('click',e=>{const target=(e.target as Element).closest<HTMLAnchorElement>('a[data-page]');if(!target||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;e.preventDefault();page=Number(target.dataset.page);render('push');document.querySelector('.archive-list-head')!.scrollIntoView({block:'start',behavior:'auto'});});
+window.addEventListener('popstate',()=>{readURL();render('none');});readURL();render();
+</script>
