@@ -9,3 +9,5 @@
 후속 확인: 이번 변경을 원격 Push한 결과, Actions 성공 여부와 실제 https://dbahyungyun.github.io/의 변경 문구 확인. 인증이 없으면 사용자 GitHub Desktop Push가 필요합니다. 사용자에게 토큰 초기화 시각이나 자동 재개를 보장하지 않습니다.
 
 이번 변경은 로컬 commit e803a75에 저장했으나, Git credential 인증이 없어 Push는 실패했습니다. GitHub Desktop에서 Push origin이 필요합니다.
+
+2026-11-05 14:15 일회성 작업 완료: 목적별 제목 게이트·본문 보조점수로 관련 글 추천을 개선했습니다. Migration은 Dump/MyDumper 글 1건, Oracle 튜닝은 Oracle 인덱스/옵티마이저 글을 우선하고, 적합한 스키마 글이 없으면 추천을 표시하지 않습니다. Oracle 자격증 날짜 2026.05, 개인 이메일 표시, 경력 상세, k8s PostgreSQL·AI AX 학습 방향을 반영했습니다. .prose 링크에 가려진 검정 버튼 글자를 흰색으로 수정했습니다. 빌드 143페이지·64글 보존 검사·추천 적합성 검사·Chrome 1440/390px 페이지 넘침/검색/버튼 계산 색상 검사 통과. 외부 Push·배포는 수행하지 않았습니다.
