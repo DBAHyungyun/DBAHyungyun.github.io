@@ -5,12 +5,13 @@ import { load } from 'cheerio';
 import Turndown from 'turndown';
 import { gfm } from 'turndown-plugin-gfm';
 import {simplifyLinkPreviews} from './link-previews.mjs';
+import {classify} from './reconcile-source.mjs';
 const origin='https://hyungyun.tistory.com';
 const parser=new XMLParser({ignoreAttributes:false});
 const incremental=process.argv.includes('--new-only');
 const readJSON=async(file,fallback)=>{try{return JSON.parse(await fs.readFile(file,'utf8'));}catch(e){if(e.code==='ENOENT')return fallback;throw e;}};
 for(const p of ['backup/pages','public/media','src/content/blog','migration']) await fs.mkdir(p,{recursive:true});
-async function fetchText(url){const r=await fetch(url,{signal:AbortSignal.timeout(45000)});if(!r.ok)throw Error(`${r.status} ${url}`);return r.text()}
+async function fetchText(url){const r=await fetch(url,{signal:AbortSignal.timeout(45000)});const html=await r.text();if(!r.ok){const e=Error(`${r.status} ${url}`);e.response={status:r.status,url:r.url,html};throw e;}return html;}
 const sitemap=await fetchText(origin+'/sitemap.xml');await fs.writeFile('backup/sitemap.xml',sitemap);
 const rss=await fetchText(origin+'/rss');await fs.writeFile('backup/rss.xml',rss);
 const list=x=>Array.isArray(x)?x:x?[x]:[];
@@ -26,7 +27,9 @@ const known=new Set(rows.flatMap(r=>[r.source,r.numericSource].filter(Boolean).m
 for(const [i,url] of urls.entries()){
  if(incremental&&known.has(normalize(url)))continue;
  try{
- const html=await fetchText(url);const $=load(html);const article=$('.contents_style').first().length?$('.contents_style').first():$('.tt_article_useless_p_margin').first();
+ const html=await fetchText(url);
+ if(incremental&&classify({status:200,html,url},{})==='unavailable')continue;
+ const $=load(html);const article=$('.contents_style').first().length?$('.contents_style').first():$('.tt_article_useless_p_margin').first();
  if(!article.length)throw Error('본문 selector 확인 필요');
  const sameEntry=html.match(/"entryId":"(\d+)"/)?.[1];
  if(incremental&&sameEntry&&known.has(origin+'/'+sameEntry))continue;
@@ -55,7 +58,7 @@ for(const [i,url] of urls.entries()){
  const entryId=html.match(/"entryId":"(\d+)"/)?.[1];
  rows.push({...data,id:`tistory-${id}`,newPath:`/blog/tistory-${id}/`,numericSource:entryId?`${origin}/${entryId}`:null,images:article.find('img').length,codeBlocks:article.find('pre').length,codeTexts:article.find('pre').map((_,e)=>$(e).text()).get(),status:incremental?'auto-imported-public-source':'imported-review-required'});
  known.add(normalize(url));if(entryId)known.add(origin+'/'+entryId);
- }catch(e){failures.push({url,error:e.message});}
+ }catch(e){if(incremental&&e.response&&classify(e.response,{})==='unavailable')continue;failures.push({url,error:e.message});}
  if((i+1)%10===0)console.log(`${i+1}/${urls.length}`);
  await new Promise(r=>setTimeout(r,200));
 }
