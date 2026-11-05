@@ -1022,5 +1022,19 @@
     "status": "imported-review-required",
     "numericSource": "https://hyungyun.tistory.com/2",
     "codeTexts": []
+  },
+  {
+    "title": "테스트",
+    "date": "2026-11-05T02:47:11.000Z",
+    "category": "Database | SQL | OS/Oracle",
+    "source": "https://hyungyun.tistory.com/entry/%ED%85%8C%EC%8A%A4%ED%8A%B8",
+    "description": "테스트",
+    "id": "tistory-3357f25a1af9bbe5",
+    "newPath": "/blog/tistory-3357f25a1af9bbe5/",
+    "numericSource": "https://hyungyun.tistory.com/69",
+    "images": 0,
+    "codeBlocks": 0,
+    "codeTexts": [],
+    "status": "auto-imported-public-source"
   }
 ]
