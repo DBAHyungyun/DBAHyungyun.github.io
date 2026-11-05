@@ -62,11 +62,7 @@ CREATE INDEX
 
 이전에 작성했던 게시글을 참고하면, Plan 조회 방법을 알 수 있습니다.
 
- [오라클 테이블과 옵티마이저
-
-오늘은 오라클의 테이블 구조를 설명하고 테이블을 생성하여, 데이터를 insert 하는 것과 오라클에서 SQL을 효율적으로 실행할 수 있는 실행 계획을 선택하는 옵티마이저에 대해서 알아보려고 합
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B3%BC-%EC%98%B5%ED%8B%B0%EB%A7%88%EC%9D%B4%EC%A0%80)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B3%BC-%EC%98%B5%ED%8B%B0%EB%A7%88%EC%9D%B4%EC%A0%80)
 
 해당 방법으로 WHERE 조건에 NAME 을 추가하여 조회한 결과 INDEX RANGE SCAN 을 진행하며 Cost 가 2 발생합니다.
 

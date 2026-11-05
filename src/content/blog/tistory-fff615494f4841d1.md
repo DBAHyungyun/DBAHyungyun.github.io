@@ -12,15 +12,9 @@ description: "이번에는 MySQL 에서 성능정보를 파악하고, 확인하�
 
 아래는 Information\_schema, Performance\_schema 에 대한 공식 문서이고 아래 정리하는 내용들과 참고해서 보면 좋을 것 같습니다. 
 
- [MySQL :: MySQL 9.6 Reference Manual :: 29 MySQL Performance Schema
+ [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/9.6/en/performance-schema.html)
 
-Chapter 29 MySQL Performance Schema The MySQL Performance Schema is a feature for monitoring MySQL Server execution at a low level. The Performance Schema has these characteristics: The Performance Schema provides a way to inspect internal execution of the
-
-dev.mysql.com](https://dev.mysql.com/doc/refman/9.6/en/performance-schema.html)
-
- [MySQL :: MySQL 8.4 Reference Manual :: 28 INFORMATION\_SCHEMA Tables
-
-dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/information-schema.html)
+ [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/information-schema.html)
 
 * * *
 

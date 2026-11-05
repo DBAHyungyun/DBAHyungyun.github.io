@@ -12,11 +12,7 @@ description: "오늘은 지난 포스팅에 이어서 Vacuum이 실제 PostgreSQ
 
 개념적인 부분은 아래 링크에서 정리하였으니, 한번씩 확인하시면 좋을 것 같습니다.
 
- [\[PostgreSQL\] PostgreSQL 기본 개념과 Vacuum이란?
-
-최근 Aurora PostgreSQL을 업그레이드 했는데, 이 과정에서 필수로 ANALYZE를 진행해야 하는 프로세스가 있었습니다.이것을 정리하면 좋을 것 같아, ANALYZE와 항상 함께 나오는 VACUUM도 함께 정리해보려
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/PostgreSQL-PostgreSQL-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90%EA%B3%BC-Vacuum%EC%9D%B4%EB%9E%80)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/PostgreSQL-PostgreSQL-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90%EA%B3%BC-Vacuum%EC%9D%B4%EB%9E%80)
 
 환경구성 : EC2 (Red Hat Enterprise Linux release 8.10 (Ootpa) / psql (PostgreSQL) 16.14
 

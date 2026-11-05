@@ -49,7 +49,7 @@ pnpm preview
 | `/resume/` | 이력서 통합을 위한 검토 초안 |
 | `/rss.xml`, `/sitemap-index.xml` | 피드와 검색엔진 발견 |
 
-차분한 녹색과 밝은 배경, 읽기 중심 타이포그래피, 어두운 코드 영역으로 구성했습니다. 외부 폰트·분석 추적기를 사용하지 않습니다. 모바일 메뉴, 이미지 크기, 코드와 표의 가로 스크롤을 고려했습니다.
+화이트 배경에 블랙·회색 글자와 구분선, 밝은 코드 영역을 사용한 여유 있는 디자인으로 구성했습니다. 외부 폰트·분석 추적기를 사용하지 않습니다. 모바일 메뉴, 이미지 크기, 코드와 표의 가로 스크롤을 고려했습니다.
 
 ## 카테고리
 
@@ -118,3 +118,11 @@ pnpm preview
 - [Google URL 변경 사이트 이전](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes)
 
 공식 문서는 배포와 SEO 원칙의 근거이며 티스토리 계정의 백업·리디렉션 권한을 증명하는 자료는 아닙니다.
+
+## 2026-11-05 디자인·링크 수정
+
+티스토리 OpenGraph 카드 53개에 저장된 잘린 미리보기 문구를 짧은 참고 링크로 정리했습니다. 공식 링크와 일반 본문·코드·이미지는 유지합니다. 신규 수집에도 같은 변환을 적용합니다. 현재 티스토리 자동 동기화는 구성되어 있지 않습니다. 새 글을 올려도 자동 배포되지 않습니다. 향후 동기화 시 전체 재수집으로 수동 수정본을 덮어쓰는 대신 신규 글을 별도 브랜치/PR로 가져와 검수하는 방식을 권장합니다.
+
+공개 반영: GitHub Desktop에서 변경 확인 → Commit → Push origin → Actions의 Build and deploy Pages 수동 실행(publish 체크). 현재 SITE_URL과 BASE_PATH는 기존 주소를 유지합니다.
+
+`https://dbahyungyun.github.io/`를 사용하려면 사용 가능한 `DBAHyungyun` 사용자명 또는 Organization을 확보하고, 해당 소유자의 `DBAHyungyun.github.io` 저장소로 배포해야 합니다. 이후 SITE_URL을 `https://dbahyungyun.github.io`, BASE_PATH를 `/`로 바꾸고 로컬 remote도 갱신해야 합니다. 사용자명·소유자 변경이나 원격 배포는 이번 로컬 수정에 포함되지 않았습니다. 이름 사용 가능 여부는 확인되지 않았습니다.

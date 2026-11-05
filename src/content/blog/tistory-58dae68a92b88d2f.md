@@ -12,11 +12,7 @@ description: "이번에는 Always On 환경의 서버를 Primary -> Secondary / 
 
 [https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-3](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-3)
 
- [MS SQL Always On 설치 가이드 - 3
-
-AD서버 구성과 클러스터 구성은 앞전의 설치 가이드를 참고 부탁드립니다.    MS SQL Always On 설치 가이드 - 1오늘은 Always On 설치 테스트를 진행해보려고 합니다.저도 SQLTAG 라는 책으로 공부하였
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-3)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-3)
 
 * * *
 

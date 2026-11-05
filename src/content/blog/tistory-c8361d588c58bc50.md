@@ -10,11 +10,7 @@ description: "오늘은 AWS의 Migration 을 담당하는 복제 인스턴스의
 
 아래는 예전에 작성했던 DMS 복제 인스턴스에 관한 글입니다. 참고하셔서 복제 인스턴스가 어떤것인지 사전에 알면 좋을 것 같아 첨부합니다. 
 
- [\[AWS\] DMS 복제 인스턴스 및 태스크 사용 방법
-
-오늘은 AWS 에서 제공하는 복제 인스턴스를 활용하여, Database Migration 을 진행해보겠습니다. Migration 이란? Source Database 에서 Target Database로 데이터를 옮기는 과정입니다. 단순 복사 뿐 아니라 RDBMS
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/AWS-DMS-%EB%B3%B5%EC%A0%9C-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EB%B0%8F-%ED%83%9C%EC%8A%A4%ED%81%AC-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/AWS-DMS-%EB%B3%B5%EC%A0%9C-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EB%B0%8F-%ED%83%9C%EC%8A%A4%ED%81%AC-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95)
 
 * * *
 
@@ -38,11 +34,7 @@ DMS 복제 인스턴스는 이전 글에서 어떤 용도인지 확인했습니�
 
 아래는 AWS 의 DMS 지표 공식문서입니다. Memory 에 관한 지표 뿐 아니라, IOPS, Latency, Throughput 등 DMS 복제 인스턴스 성능에 주요한 지표들이 나와있으니 운영에 참고하면 좋을 것 같습니다. 
 
- [AWS DMS 작업 모니터링 - AWS 데이터베이스 마이그레이션 서비스
-
-전체 로드 중에 커밋 속도 값을 줄이려면 AWS DMS 콘솔을 열고 데이터베이스 마이그레이션 작업을 선택한 다음 작업을 생성하거나 수정합니다. 고급 설정을 확장하고 전체 로드 중 커밋 비율 값을
-
-docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Monitoring.html#CHAP_Monitoring.Metrics)
+ [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Monitoring.html#CHAP_Monitoring.Metrics)
 
 ### OOM 현상이란?
 

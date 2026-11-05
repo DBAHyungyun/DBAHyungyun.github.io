@@ -124,22 +124,10 @@ MyDumper 진행
 
 참고하면 좋을 것 같아 첨부합니다.
 
- [mydumper - MyDumper documentation
+ [참고 자료 · mydumper.github.io](https://mydumper.github.io/mydumper/docs/html/mydumper_usage.html)
 
-Previous Usage
+ [참고 자료 · mydumper.github.io](https://mydumper.github.io/mydumper/docs/html/myloader_usage.html)
 
-mydumper.github.io](https://mydumper.github.io/mydumper/docs/html/mydumper_usage.html)
-
- [myloader - MyDumper documentation
-
-Previous mydumper
-
-mydumper.github.io](https://mydumper.github.io/mydumper/docs/html/myloader_usage.html)
-
- [MySQL :: MySQL 8.4 Reference Manual :: 6.5.4 mysqldump — A Database Backup Program
-
-6.5.4 mysqldump — A Database Backup Program The mysqldump client utility performs logical backups, producing a set of SQL statements that can be executed to reproduce the original database object definitions and table data. It dumps one or more MySQL da
-
-dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/mysqldump.html)
+ [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/mysqldump.html)
 
 다음번에는 마이그레이션 이후 체크해야할 사항들과 주의해야할 사항을 중점적으로 정리해보겠습니다.

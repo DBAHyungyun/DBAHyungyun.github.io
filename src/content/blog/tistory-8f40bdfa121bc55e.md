@@ -10,11 +10,7 @@ description: "이번에는,MySQL의 Redo Log, Binary Log의 심화 내용과 아
 
 아래는 이전에 작성했던 MySQL 아키텍처의 간단한 정리와 Buffer Pool, Redo Log의 개념이 기재되어 있습니다. 참고해주세요.
 
- [MySQL 아키텍처 - 1
-
-오늘은 오라클 다음으로 가장 많이 사용하고 있는, 오픈 소스형 Database 중 하나인 제가 현재 운영중인 시스템의 데이터베이스인 MySQL의 아키텍처를 공부하며 기록해보려고 합니다. RBMDS에 대한
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
 
 * * *
 

@@ -12,19 +12,11 @@ description: "요즘 여러가지 Cloud 기반 데이터베이스의 사용이 �
 
 참고 : [https://learn.microsoft.com/ko-kr/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?view=azuresql](https://learn.microsoft.com/ko-kr/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?view=azuresql)
 
- [Azure SQL란? - Azure SQL
-
-Azure SQL 서비스 제품군 내의 다양한 옵션에 대해 알아봅니다. Azure VM의 Azure SQL 데이터베이스, Azure SQL Managed Instance 및 SQL Server.
-
-learn.microsoft.com](https://learn.microsoft.com/ko-kr/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?view=azuresql)
+ [참고 자료 · learn.microsoft.com](https://learn.microsoft.com/ko-kr/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?view=azuresql)
 
 참고2 : [https://learn.microsoft.com/ko-kr/azure/azure-sql/database/sql-database-paas-overview?view=azuresql](https://learn.microsoft.com/ko-kr/azure/azure-sql/database/sql-database-paas-overview?view=azuresql)
 
- [Azure SQL Database 서비스란? - Azure SQL Database
-
-SQL Database에 대한 소개: 클라우드 환경에서 Microsoft의 관계형 데이터베이스 관리 시스템(RDBMS)의 기능과 기술 세부 정보를 살펴봅니다.
-
-learn.microsoft.com](https://learn.microsoft.com/ko-kr/azure/azure-sql/database/sql-database-paas-overview?view=azuresql)
+ [참고 자료 · learn.microsoft.com](https://learn.microsoft.com/ko-kr/azure/azure-sql/database/sql-database-paas-overview?view=azuresql)
 
 * * *
 

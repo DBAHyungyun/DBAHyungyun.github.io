@@ -152,8 +152,4 @@ Target DB의 DMS 계정 권한을 수정한 이후에는 Replication Task를 재
 
 AWS 공식 문서 — Using a MySQL-compatible database as a target for AWS Database Migration Service
 
- [MySQL 호환 데이터베이스를의 대상으로 사용 AWS Database Migration Service - AWS 데이터베이스 마이그레
-
-Aurora MySQL 8.4는 TLS 1.2용 GCM 암호 제품군만 지원합니다. 모든 CBC 모드 암호가 제거되었습니다.는 MySQL 및 Aurora MySQL 엔드포인트에 TLS 1.2를 AWS DMS 사용하고 지원되는 GCM 암호를 자동 협상합니다. 사
-
-docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Target.MySQL.html#CHAP_Target.MySQL.Prerequisites)
+ [AWS DMS 공식 문서 · MySQL 호환 Target](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Target.MySQL.html#CHAP_Target.MySQL.Prerequisites)

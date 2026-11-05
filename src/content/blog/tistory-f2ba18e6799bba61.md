@@ -10,25 +10,13 @@ description: "안녕하세요. 오늘은 데이터베이스에서 중요한 성�
 
 이전에 포스팅 했던 MySQL Undo 를 참고하면 이해하기 더 용이할 것 같아 첨부합니다. 봐주시면 감사하겠습니다.
 
- [\[MySQL\] Undo Log란 무엇인가?
-
-안녕하세요. 이번에는 MySQL에서 백업과 데이터 보존에 중요한 부분을 담당하고 있는 Undo Log에 관하여 공부해보려고 합니다.공식 문서와, Real MySQL 책을 참고하였습니다. 아래 링크는 MySQL 공식 Comm
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-Undo-Log%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-Undo-Log%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
 
 참고 서적 : Real MySQL, MVCC, 트랜잭션 격리 수준 공식 문서
 
- [MySQL :: MySQL 8.4 Reference Manual :: 17.3 InnoDB Multi-Versioning
+ [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-multi-versioning.html)
 
-17.3 InnoDB Multi-Versioning InnoDB is a multi-version storage engine. It keeps information about old versions of changed rows to support transactional features such as concurrency and rollback. This information is stored in undo tablespaces in a data str
-
-dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-multi-versioning.html)
-
- [MySQL :: MySQL 8.4 Reference Manual :: 17.7.2.1 Transaction Isolation Levels
-
-17.7.2.1 Transaction Isolation Levels Transaction isolation is one of the foundations of database processing. Isolation is the I in the acronym ACID; the isolation level is the setting that fine-tunes the balance between performance and reliability, consi
-
-dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-isolation-levels.html)
+ [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-isolation-levels.html)
 
 * * *
 

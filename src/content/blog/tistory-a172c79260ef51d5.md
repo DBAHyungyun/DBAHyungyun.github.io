@@ -10,11 +10,7 @@ description: "오늘은 지난번에 공부한 MySQL 엔진 수준의 Lock에서
 
 아래는 이전에 공부한 MySQL 엔진 수준의 Lock 링크이니 참고하면 좋을 것 같습니다. 
 
- [\[MySQL\] MySQL 엔진의 Lock 수준 (글로벌 락, 테이블 락, 네임드 락, 메타데이터 락)
-
-오늘은 지난번 포스팅했던, MVCC 와 상반되는 개념인 Lock에 대해서 공부해보려고 합니다.참고 : Real MySQL 8.0 일전에 봤던 글을 참고해서 보시면 더 좋을 것 같아 첨부드리니 참고 부탁드립니다. \[MyS
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-MySQL-%EC%97%94%EC%A7%84%EC%9D%98-Lock-%EC%88%98%EC%A4%80-%EA%B8%80%EB%A1%9C%EB%B2%8C-%EB%9D%BD-%ED%85%8C%EC%9D%B4%EB%B8%94-%EB%9D%BD-%EB%84%A4%EC%9E%84%EB%93%9C-%EB%9D%BD-%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%9D%BD)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-MySQL-%EC%97%94%EC%A7%84%EC%9D%98-Lock-%EC%88%98%EC%A4%80-%EA%B8%80%EB%A1%9C%EB%B2%8C-%EB%9D%BD-%ED%85%8C%EC%9D%B4%EB%B8%94-%EB%9D%BD-%EB%84%A4%EC%9E%84%EB%93%9C-%EB%9D%BD-%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%9D%BD)
 
 참고 서적 : Real MySQL 8.0, MySQL 공식 Community 
 
@@ -94,11 +90,7 @@ Auto\_Increment 락은 아주 짧은 시간동안 걸렸다가 해제되는 자�
 
 Lock 발생 방법은 Oracle 로 테스트한 방법이 있으니 참고하시면 좋을 것 같습니다. (트랜잭션 및 실행 과정은 거의 흡사합니다.)
 
- [Oracle Lock 의 정의와 Lock Test
-
-오늘은 Lock 에 대한 자세한 정의와 실제 Oracle 환경에서의 Lock을 발생시켜 볼 예정이다. Lock은 지난번 게시물에 간략하게 설명하였으나, 이 게시물에서는 좀 더 세세하게 공부하고자 한다. Lock이
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/Oracle-Lock-%EC%9D%98-%EC%A0%95%EC%9D%98%EC%99%80-Lock-Test)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/Oracle-Lock-%EC%9D%98-%EC%A0%95%EC%9D%98%EC%99%80-Lock-Test)
 
 Lock 테스트 과정
 

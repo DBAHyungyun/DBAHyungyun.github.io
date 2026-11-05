@@ -18,11 +18,7 @@ description: "오늘은 Always On 설치 테스트를 진행해보려고 합니�
 
 [https://hyungyun.tistory.com/entry/MSSQL-Always-On-%EA%B5%AC%EC%84%B1%EC%9D%B4%EB%9E%80](https://hyungyun.tistory.com/entry/MSSQL-Always-On-%EA%B5%AC%EC%84%B1%EC%9D%B4%EB%9E%80)
 
- [MSSQL Always On 구성이란?
-
-이번에는 MSSQL 의 Always On 구성에 대하여 알아보려고 한다. 기본적으로 Oracle 이나 Tibero 등 RDBMS 에는 RAC, TAC, HA (Active / Stand-by) 등 여러가지 구성이 있는데, 그중 MSSQL 에서는 Always On 이라는 고가용
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MSSQL-Always-On-%EA%B5%AC%EC%84%B1%EC%9D%B4%EB%9E%80)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MSSQL-Always-On-%EA%B5%AC%EC%84%B1%EC%9D%B4%EB%9E%80)
 
 * * *
 

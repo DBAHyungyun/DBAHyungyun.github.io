@@ -20,11 +20,7 @@ MSSQL 2016 설치는 2022와 방법이 동일합니다. 아래 링크를 참고�
 
 [https://hyungyun.tistory.com/entry/MSSQL-2022-%EC%84%A4%EC%B9%98](https://hyungyun.tistory.com/entry/MSSQL-2022-%EC%84%A4%EC%B9%98)
 
- [MSSQL 2022 설치
-
-오늘은 MSSQL 2022 설치를 진행해보겠습니다.  우선 설치 파일은 Microsoft 공식 홈페이지에서 다운로드가 가능합니다.(링크 : https://www.microsoft.com/ko-kr/sql-server/sql-server-downloads)실습 목적이므로, 개발
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MSSQL-2022-%EC%84%A4%EC%B9%98)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MSSQL-2022-%EC%84%A4%EC%B9%98)
 
 * * *
 

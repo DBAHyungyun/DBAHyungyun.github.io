@@ -10,11 +10,7 @@ description: "오늘은 DB 성능과 굉장히 밀접한 관련이 있는 I/O �
 
 아래는 일전에 작성해 둔 MySQL InnoDB Buffer Pool 에 대한 내용입니다. Oracle, MySQL,Maria 각 아키텍처의 구조가 다르지만 Memory, Disk 튜닝과 성능의 관점에서의 큰 틀은 유사하기 때문에 참고하시면 좋을 것 같아 첨부합니다. 
 
- [\[MySQL\] InnoDB\_Buffer Pool 이란?
-
-안녕하세요. 오늘은 MySQL 과 MariaDB 에서 성능으로 중요한 부분을 차지하고 있는 InnoDB\_Buffer\_Pool 에 대해서 공부 해보고, Size를 어떻게 조정하는 것이 좋은지 공부 해보겠습니다. 성능에 중요한 부
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-InnoDBBuffer-Pool-%EC%9D%B4%EB%9E%80)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-InnoDBBuffer-Pool-%EC%9D%B4%EB%9E%80)
 
 참고 : Real MySQL 8.0
 

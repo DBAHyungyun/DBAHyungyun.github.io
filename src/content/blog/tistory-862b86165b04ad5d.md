@@ -10,11 +10,7 @@ MS SQL Always On 설치 가이드 - 1 
 
 [https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1)
 
- [MS SQL Always On 설치 가이드 - 1
-
-오늘은 Always On 설치 테스트를 진행해보려고 합니다.저도 SQLTAG 라는 책으로 공부하였고, 여러 블로그를 참고해서 여러번 설치한 방법을 공유하는거라 공식적인 정답이라고 보긴 어려울 수 있지
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1)
 
 오늘은 도메인 설정 및 확인 이후 윈도우 클러스터 구성을 진행해보겠습니다.
 

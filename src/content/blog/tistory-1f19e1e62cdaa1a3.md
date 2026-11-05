@@ -14,11 +14,7 @@ description: "오늘은 SQL이 아닌 OS 에서 Red Hat Enterprise Linux 9.5 iso
 
 링크 : [https://developers.redhat.com/products/rhel/download](https://developers.redhat.com/products/rhel/download)
 
- [Download Red Hat Enterprise Linux at no cost | Red Hat Developer
-
-Download Red Hat Enterprise Linux at no cost. Get access to RHEL cloud ready images, ISOs, and more.
-
-developers.redhat.com](https://developers.redhat.com/products/rhel/download)
+ [참고 자료 · developers.redhat.com](https://developers.redhat.com/products/rhel/download)
 
 설치 환경은 VMware Workstation Pro 16 을 사용하였고, 아래 네모박스의 Create a New Virtual Machine 을 클릭하여 새로운 가상서버를 구성합니다. 
 

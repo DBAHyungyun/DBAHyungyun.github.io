@@ -14,11 +14,7 @@ Amazon CloudWatch는 Amazon Web Services(AWS) 리소스와 AWS에서 실행하�
 
 아래는 CloudWatch가 무엇인지 간략하게 설명한 공식 문서 링크입니다. 참고하면 좋을 것 같습니다. 
 
- [Amazon CloudWatch란 무엇인가요? - Amazon CloudWatch
-
-이 페이지에 작업이 필요하다는 점을 알려 주셔서 감사합니다. 실망시켜 드려 죄송합니다. 잠깐 시간을 내어 설명서를 향상시킬 수 있는 방법에 대해 말씀해 주십시오.
-
-docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+ [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
 
 * * *
 

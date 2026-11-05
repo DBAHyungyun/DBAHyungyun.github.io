@@ -12,11 +12,7 @@ description: "오늘은 지난번 오라클 아키텍쳐 - 1 에 이어서, 조�
 
 [https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-1](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-1)
 
- [오라클의 기본 아키텍쳐 - 1
-
-오늘은 오라클의 기본 아키텍쳐에 대해 간단하게 공부해보려고 합니다. 오라클 아키텍쳐란 양이 정말 방대하고 어려워서 시간나고 공부 할 때 마다 여러번에 걸쳐서 업로드 하려고 합니다.  
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-1)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-1)
 
 * * *
 

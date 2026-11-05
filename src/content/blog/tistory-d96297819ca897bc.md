@@ -42,17 +42,9 @@ DMS 태스크 : Aurora MySQL to Aurora MySQL (동종 DB간 DMS)
 
 DMS 태스크를 실행할 때에는 여러가지 사전 준비 사항이 필요합니다. 사전 준비 사항은 AWS Document에 잘 정리 되어 있으니 정독하시어 반드시 적용해야 합니다. (Source 준비 사항과 Target 준비 사항이 모두 나와있는 Docs 입니다.)
 
- [AWS DMS에서 MySQL 호환 데이터베이스를 소스로 사용 - AWS 데이터베이스 마이그레이션 서비스
+ [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Source.MySQL.html)
 
-경우에 따라 '0' 값으로 DATETIME 및 TIMESTAMP 데이터 형식(즉, 0000-00-00)을 지정할 수 있습니다. 이 경우, 복제 작업의 대상 데이터베이스가 DATETIME 및 TIMESTAMP 데이터 형식으로 ‘0’ 값을 지원하는지
-
-docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Source.MySQL.html)
-
- [AWS Database Migration Service에서 MySQL 호환 데이터베이스를 대상으로 사용 - AWS 데이터베이스 마이그
-
-이 페이지에 작업이 필요하다는 점을 알려 주셔서 감사합니다. 실망시켜 드려 죄송합니다. 잠깐 시간을 내어 설명서를 향상시킬 수 있는 방법에 대해 말씀해 주십시오.
-
-docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Target.MySQL.html)
+ [AWS DMS 공식 문서 · MySQL 호환 Target](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Target.MySQL.html)
 
 ## AWS DMS 태스크 연동 방법
 
@@ -116,11 +108,7 @@ DMS 태스크 생성
 
 태스크를 설정하는 데에는 여러가지 편집 모드를 지원하는데 관련된 내용을 다 설명하기에는 양이 방대하여 AWS 공식 링크를 첨부하니 참고함이 좋을 것 같다. (참고로 데이터 마이그레이션을 통해 검증 옵션을 선택하면 작업 시간이 굉장히 증가해서 잘 사용하지 않는 옵션이다.)
 
- [작업 생성 - AWS 데이터베이스 마이그레이션 서비스
-
-대상이 MongoDB인 경우 자르기 모드에서는 대상의 테이블이 잘리지 않습니다. 그 대신 컬렉션이 삭제되고 모든 인덱스가 손실됩니다. 대상이 MongoDB인 경우 자르기 모드를 사용하지 마세요.
-
-docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Tasks.Creating.html)
+ [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Tasks.Creating.html)
 
 테이블 매핑을 활용하여, 어떤 스키마의 테이블을 마이그레이션 할지 정해준다. 저는 mig\_t 라는 스키마의 모든 테이블을 마이그레이션 하는 것으로 설정하였습니다. 
 

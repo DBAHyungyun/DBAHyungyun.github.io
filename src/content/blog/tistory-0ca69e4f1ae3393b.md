@@ -10,11 +10,7 @@ description: "안녕하세요. 오늘은 AWS Aurora MySQL 환경에서의 Redaer
 
 이전에 작성했던, 일반 MySQL과 Aurora MySQL의 차이점을 참고하면 더욱 이해하기에 쉬울 것 같아 첨부합니다. 
 
- [\[AWS\] AWS RDS MySQL vs AWS Aurora MySQL
-
-이번에는 RDS MySQL 과 Aurora MySQL 의 아키텍처적인 차이점에 대해서 공부해볼까 합니다. AWS 의 Aurora MySQL 소개 Document를 보면 MySQL을 기반으로 한 MySQL 와 호환되는 완전 관리형 데이터베이스 엔진이
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/AWS-AWS-RDS-MySQL-vs-AWS-Aurora-MySQL)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/AWS-AWS-RDS-MySQL-vs-AWS-Aurora-MySQL)
 
 ### 개요
 

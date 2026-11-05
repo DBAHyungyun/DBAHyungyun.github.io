@@ -26,11 +26,7 @@ AWS 가 지원하는 RDS 항목
 
 RDS MySQL은 기본적으로 오픈소스 DB MySQL과 동일한 아키텍처 구조를 가지게 된다. MySQL 아키텍처는 이전 글에서도 작성한적이 있어서 참고하면 좋을듯 하여 링크를 남겨 두겠습니다. 
 
- [MySQL 아키텍처 - 1
-
-오늘은 오라클 다음으로 가장 많이 사용하고 있는, 오픈 소스형 Database 중 하나인 제가 현재 운영중인 시스템의 데이터베이스인 MySQL의 아키텍처를 공부하며 기록해보려고 합니다. RBMDS에 대한
-
-hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
+ [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
 
 그렇다면, RDS MySQL과 Aurora MySQL의 차이점에 대해서 중점적으로 알아볼텐데, 가장 중요한 차이점은 Storage 구성방식에 있습니다.
 

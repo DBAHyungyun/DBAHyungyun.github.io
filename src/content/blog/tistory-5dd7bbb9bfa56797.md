@@ -12,11 +12,7 @@ description: "안녕하세요. 이번에는 MySQL에서 백업과 데이터 보�
 
 아래 링크는 MySQL 공식 Community 문서입니다. 참고하면 좋을 것 같아 첨부하였습니다. 
 
- [MySQL :: MySQL 8.4 Reference Manual :: 17.6.6 Undo Logs
-
-An undo log is a collection of undo log records associated with a single read-write transaction. An undo log record contains information about how to undo the latest change by a transaction to a clustered index record. If another transaction needs to see t
-
-dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-undo-logs.html)
+ [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-undo-logs.html)
 
 * * *
 

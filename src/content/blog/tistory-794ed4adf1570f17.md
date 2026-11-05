@@ -10,11 +10,7 @@ description: "오늘은 Database 의 성능 관리와 튜닝에서 중요한 부
 
 많은 수의 Line 과 쿼리를 전부 이해하고, 튜닝하기란 쉽지 않습니다. 이럴때 Query Plan 을 확인하여, 보다 효율적인 방법으로 쿼리를 수행시키는 것이 필요한데 이때 필요한 것이 Plan 입니다. 아래는 Explain Plan에 대한 MySQL 공식 문서이므로 참고하면 좋을 것 같습니다. 
 
- [MySQL :: MySQL 8.4 Reference Manual :: 10.8 Understanding the Query Execution Plan
-
-10.8 Understanding the Query Execution Plan Depending on the details of your tables, columns, indexes, and the conditions in your WHERE clause, the MySQL optimizer considers many techniques to efficiently perform the lookups involved in an SQL query. A qu
-
-dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/execution-plan-information.html)
+ [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/execution-plan-information.html)
 
 * * *
 

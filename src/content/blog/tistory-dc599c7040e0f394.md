@@ -59,11 +59,7 @@ Redshift 기본 아키텍처
 
 아래 분산키를 설정하는 분산 스타일에 대한 AWS 공식 문서입니다. 참고하면 좋을 것 같아 첨부합니다. 
 
- [분산 스타일 - Amazon Redshift
-
-열에 대한 배포 스타일을 지정하면 Amazon Redshift가 클러스터 수준에서 데이터 배포를 처리합니다. Amazon Redshift는 데이터베이스 객체 내 데이터 분할 개념을 요구하거나 지원하지 않습니다. 따라
-
-docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/c_choosing_dist_sort.html)
+ [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/c_choosing_dist_sort.html)
 
 대량 병렬 처리 (MPP)
 
@@ -86,11 +82,7 @@ Redshift는 제출된 SQL 쿼리를 구문 분석기와 쿼리 옵티마이저�
 
 자세한 쿼리 실행 및 워크 플로우는 아래 링크를 참고하면 좋을 것 같습니다.
 
- [Amazon Redshift에서 SQL 쿼리 처리 - AWS 권장 가이드
-
-이 페이지에 작업이 필요하다는 점을 알려 주셔서 감사합니다. 실망시켜 드려 죄송합니다. 잠깐 시간을 내어 설명서를 향상시킬 수 있는 방법에 대해 말씀해 주십시오.
-
-docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/prescriptive-guidance/latest/query-lifecycle-redshift/query-processing.html)
+ [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/prescriptive-guidance/latest/query-lifecycle-redshift/query-processing.html)
 
 ### Redshift 의 장단점
 
