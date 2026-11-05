@@ -7,3 +7,5 @@
 자동화: 공개 GitHub의 40136a9 Push 실행은 build/deploy 성공. workflow에는 매시간 17분 schedule과 신규 글 수집·검증·Commit/Push·배포가 포함되어 있습니다. 실제 신규 글이 발행되어 예약 수집·Commit·배포되는 전체 운영 경로는 아직 검증되지 않았습니다.
 
 후속 확인: 이번 변경을 원격 Push한 결과, Actions 성공 여부와 실제 https://dbahyungyun.github.io/의 변경 문구 확인. 인증이 없으면 사용자 GitHub Desktop Push가 필요합니다. 사용자에게 토큰 초기화 시각이나 자동 재개를 보장하지 않습니다.
+
+이번 변경은 로컬 commit e803a75에 저장했으나, Git credential 인증이 없어 Push는 실패했습니다. GitHub Desktop에서 Push origin이 필요합니다.
