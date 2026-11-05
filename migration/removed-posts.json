@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "tistory-3357f25a1af9bbe5",
+    "source": "https://hyungyun.tistory.com/entry/%ED%85%8C%EC%8A%A4%ED%8A%B8",
+    "numericSource": "https://hyungyun.tistory.com/69",
+    "newPath": "/blog/tistory-3357f25a1af9bbe5/",
+    "reason": "source-no-longer-public",
+    "removedAt": "2026-11-05T07:57:01.984Z"
+  },
+  {
+    "id": "tistory-3eecd8705e805f49",
+    "source": "https://hyungyun.tistory.com/entry/%ED%85%8C%EC%8A%A4%ED%8A%B82",
+    "numericSource": "https://hyungyun.tistory.com/70",
+    "newPath": "/blog/tistory-3eecd8705e805f49/",
+    "reason": "source-no-longer-public",
+    "removedAt": "2026-11-05T07:57:01.985Z"
+  }
+]
