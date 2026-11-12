@@ -1038,5 +1038,25 @@
       "UPDATE customer_accounts\nSET account_status = 'INACTIVE';"
     ],
     "status": "auto-imported-public-source"
+  },
+  {
+    "title": "[Oracle] 인덱스 생성 전후 실행계획 비교 및 Index Skip Scan 실습",
+    "date": "2026-11-12T07:33:01.000Z",
+    "category": "Database | SQL | OS/Oracle",
+    "source": "https://hyungyun.tistory.com/entry/Oracle-%EC%9D%B8%EB%8D%B1%EC%8A%A4-%EC%83%9D%EC%84%B1-%EC%A0%84%ED%9B%84-%EC%8B%A4%ED%96%89%EA%B3%84%ED%9A%8D-%EB%B9%84%EA%B5%90-%EB%B0%8F-Index-Skip-Scan-%EC%8B%A4%EC%8A%B5",
+    "description": "1. 개요 요즘 SQLP 자격증 취득을 위해 친절한 SQL 튜닝을 공부하면서 인덱스의 수직적 탐색과 수평적 탐색, Access Predicate와 Filter Predicate에 대해 학습하다, 추후에 기록해두면 좋을 것 같아 내용을",
+    "id": "tistory-d6db60d07a2bf96b",
+    "newPath": "/blog/tistory-d6db60d07a2bf96b/",
+    "numericSource": "https://hyungyun.tistory.com/72",
+    "images": 4,
+    "codeBlocks": 5,
+    "codeTexts": [
+      "CREATE TABLE LAB_ORDERS (\n    ORDER_ID     NUMBER PRIMARY KEY,\n    CUSTOMER_ID  NUMBER NOT NULL,\n    ORDER_MONTH  NUMBER(6) NOT NULL,\n    STATUS       VARCHAR2(10) NOT NULL,\n    ORDER_DATE   DATE NOT NULL,\n    AMOUNT       NUMBER(12,2),\n    PADDING      VARCHAR2(100)\n);",
+      "SELECT /*+ gather_plan_statistics */\n       ORDER_ID,\n       CUSTOMER_ID,\n       ORDER_MONTH\nFROM LAB_ORDERS\nWHERE CUSTOMER_ID = 100;",
+      "CREATE INDEX IDX_LAB_CUSTOMER\nON LAB_ORDERS(CUSTOMER_ID);",
+      "CREATE INDEX IDX_LAB_MONTH_CUST\nON LAB_ORDERS(ORDER_MONTH, CUSTOMER_ID);",
+      "SELECT /*+ gather_plan_statistics */\n    ORDER_ID,\n    CUSTOMER_ID,\n    ORDER_MONTH\nFROM LAB_ORDERS\nWHERE CUSTOMER_ID = 100;"
+    ],
+    "status": "auto-imported-public-source"
   }
 ]
