@@ -37,11 +37,13 @@ const sections = headings.filter(({ depth }) => depth === 2 || depth === 3);
 </Layout>
 
 <style>
+  article :global(h2[id]), article :global(h3[id]) { scroll-margin-top: 32px; }
+
   .toc-position {
     display: none;
   }
 
-  @media screen and (min-width: 1360px) {
+  @media screen and (min-width: 1120px) {
     .toc-position {
       display: block;
       position: sticky;
@@ -51,8 +53,8 @@ const sections = headings.filter(({ depth }) => depth === 2 || depth === 3);
 
     .toc {
       position: absolute;
-      left: calc(100% + 32px);
-      width: 220px;
+      left: calc(100% + 20px);
+      width: clamp(124px, calc((100vw - 800px) / 2 - 36px), 220px);
       max-height: calc(100vh - 64px);
       overflow: auto;
       display: grid;
@@ -100,6 +102,21 @@ const sections = headings.filter(({ depth }) => depth === 2 || depth === 3);
       else link.removeAttribute('aria-current');
     });
   }
+
+  links.forEach((link, index) => {
+    const heading = sections[index];
+    if (!heading) return;
+
+    link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+
+      event.preventDefault();
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+      heading.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'instant' : 'smooth' });
+    });
+  });
 
   if (links.length) {
     updateCurrentSection();
