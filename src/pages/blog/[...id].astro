@@ -1,6 +1,108 @@
 ---
-import Layout from '../../layouts/Layout.astro';import {getCollection,render} from 'astro:content';import {path} from '../../lib/paths';
-export async function getStaticPaths(){return(await getCollection('blog')).map(post=>({params:{id:post.id},props:{post}}));}
-const {post}=Astro.props;const {Content}=await render(post);
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+import { path } from '../../lib/paths';
+
+export async function getStaticPaths() {
+  return (await getCollection('blog')).map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const sections = headings.filter(({ depth }) => depth === 2 || depth === 3);
 ---
-<Layout title={post.data.title} description={post.data.description} article date={post.data.date}><article class="prose"><a href={path('blog/')}>← 모든 글</a><div class="pagehead"><div class="meta">{post.data.category} · {post.data.date.slice(0,10)}</div><h1>{post.data.title}</h1><a class="meta" href={post.data.source}>티스토리 원문 ↗</a></div><Content/></article></Layout>
+<Layout title={post.data.title} description={post.data.description} article date={post.data.date}>
+  <article class="prose">
+    <a href={path('blog/')}>← 모든 글</a>
+    <div class="pagehead">
+      <div class="meta">{post.data.category} · {post.data.date.slice(0, 10)}</div>
+      <h1>{post.data.title}</h1>
+      <a class="meta" href={post.data.source}>티스토리 원문 ↗</a>
+    </div>
+    {sections.length > 1 && (
+      <aside class="toc-position">
+        <nav class="toc" aria-label="글 목차">
+          <strong>목차</strong>
+          {sections.map(({ depth, slug, text }) => (
+            <a class:list={[{ subsection: depth === 3 }]} href={'#' + encodeURIComponent(slug)}>{text}</a>
+          ))}
+        </nav>
+      </aside>
+    )}
+    <Content />
+  </article>
+</Layout>
+
+<style>
+  .toc-position {
+    display: none;
+  }
+
+  @media screen and (min-width: 1360px) {
+    .toc-position {
+      display: block;
+      position: sticky;
+      top: 32px;
+      height: 0;
+    }
+
+    .toc {
+      position: absolute;
+      left: calc(100% + 32px);
+      width: 220px;
+      max-height: calc(100vh - 64px);
+      overflow: auto;
+      display: grid;
+      gap: 4px;
+      border-left: 1px solid #ddd;
+      padding: 0 12px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .toc a {
+      display: block;
+      padding: 4px 6px;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .toc a.subsection {
+      padding-inline-start: 18px;
+    }
+
+    .toc a:hover,
+    .toc a[aria-current="location"] {
+      background: #f4f4f4;
+      color: #202020;
+    }
+
+    .toc a[aria-current="location"] {
+      font-weight: 700;
+    }
+  }
+</style>
+
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.toc a')];
+  const sections = links.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1))));
+
+  function updateCurrentSection() {
+    let current = -1;
+    sections.forEach((heading, index) => {
+      if (heading && heading.getBoundingClientRect().top <= 80) current = index;
+    });
+    links.forEach((link, index) => {
+      if (index === current) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  if (links.length) {
+    updateCurrentSection();
+    window.addEventListener('scroll', updateCurrentSection, { passive: true });
+  }
+</script>
