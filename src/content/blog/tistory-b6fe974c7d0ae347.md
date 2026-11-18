@@ -88,26 +88,74 @@ aws rds describe-db-parameters \
 
 지난 4월 Test 진행한 모습
 
-## 4\. 개발·검증 및 운영 환경 업그레이드
+## 4\. 업그레이드 방식 선정 및 운영 적용
 
-운영 환경의 업그레이드에 앞서 개발·검증 환경에서 사전 검토를 진행하였습니다.
+### 4.1 업그레이드 방식 비교
 
-운영 Database는 애플리케이션과 연결되어 있으므로 업그레이드 과정에서 DB Connection이 종료되거나 서비스 응답이 일시적으로 중단될 수 있기 때문입니다.
+Aurora MySQL의 엔진 업그레이드는 In-place Upgrade 외에도 Blue/Green Deployment, Snapshot Restore 등의 방식으로 진행할 수 있습니다.
 
-이번 운영 작업에서는 사전에 서비스 점검 시간을 확보한 후 **In-place Upgrade** 방식으로 업그레이드를 진행하였습니다.
+각 방식은 작업 절차와 서비스 영향도가 다르기 때문에 운영 환경의 특성에 맞게 선택하는 것이 중요합니다.
 
-In-place Upgrade는 기존 DB Cluster의 엔진 버전을 직접 변경하는 방식으로, 작업 중 엔진 재시작 및 연결 중단이 발생할 수 있습니다.
+<table style="border-collapse: collapse; width: 100%;" border="1" data-ke-align="alignLeft"><tbody><tr><td><span>구분</span></td><td>In-place Upgrade</td><td><span>Blue/Green Deployment</span></td><td><span>Snapshot Restore</span></td></tr><tr><td><span>작업 방식</span></td><td><span>기존 Cluster의 엔진 버전 변경</span></td><td><span>신규 Green 환경에서 업그레이드 후 전환</span></td><td><span>Snapshot을 신규 Cluster로 복원</span></td></tr><tr><td><span>기존 Cluster 유지</span></td><td><span>기존 Cluster 직접 변경</span></td><td><span>전환 전까지 기존 환경 유지</span></td><td><span>기존 환경 별도 유지 가능</span></td></tr><tr><td><span>Downtime</span></td><td><span>엔진 재시작 및 연결 중단 가능</span></td><td><span>Switchover 시 짧은 연결 중단</span></td><td><span>복원 및 서비스 전환 시간 필요</span></td></tr><tr><td><span>데이터 동기화</span></td><td><span>별도 동기화 불필요</span></td><td><span>Blue/Green 간 복제</span></td><td><span>Snapshot 이후 변경분 별도 고려</span></td></tr><tr><td><span>추가 작업</span></td><td><span>상대적으로 단순</span></td><td><span>Green 환경 및 복제 상태 관리</span></td><td><span>신규 Cluster 구성 및 Endpoint 전환</span></td></tr></tbody></table>
+
+**Blue/Green Deployment**는 기존 운영 환경과 별도의 Green 환경을 생성하고, 데이터 변경 사항을 동기화하면서 신규 버전을 검증할 수 있다는 장점이 있습니다.
+
+다운사이징에 해당하는 내용이지만, Blue/Green 을 활용했기에 관련 내용 첨부하면 좋을 듯 하여 첨부합니다.
+
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/AWS-MySQL-Storage-%EB%8B%A4%EC%9A%B4-%EC%82%AC%EC%9D%B4%EC%A7%95)
+
+업그레이드 완료 후 Switchover를 통해 신규 환경으로 전환하므로 서비스 중단 시간을 최소화해야 하는 환경에서 유용합니다.
+
+반면 별도의 Green 환경을 운영해야 하므로 추가 리소스와 복제 상태, 전환 조건 등을 함께 관리해야 합니다.
+
+**Snapshot Restore**는 특정 시점의 Snapshot을 이용하여 신규 DB Cluster를 생성하는 방식입니다.
+
+기존 환경을 유지하면서 신규 환경을 구성할 수 있지만, Snapshot 생성 이후 발생한 데이터 변경분은 자동으로 동기화되지 않습니다.
+
+따라서 운영 환경에서 해당 방식을 이용하려면 데이터 정합성과 애플리케이션 Endpoint 전환을 함께 고려해야 합니다.
+
+### 4.2 In-place Upgrade 선정 배경
+
+이번 작업에서는 **In-place Upgrade 방식**으로 운영 환경의 엔진 버전을 변경하였습니다.
+
+해당 방식을 선택한 배경은 다음과 같이 정리할 수 있습니다.
+
+**첫번째, 동일한 Aurora MySQL 3 계열 내 Minor Version Upgrade라는 점**
+
+이번 작업은 Major Version을 변경하는 것이 아니라 기존 Aurora MySQL 3 계열에서 3.10.3으로 업그레이드하는 작업이었습니다.
+
+AWS에서는 동일 Major Version의 마이너 업그레이드 시 기존 Cluster의 Engine Version을 직접 변경하는 방법을 지원하고 있습니다.
+
+**두번째, 사전에 서비스 점검 및 중단 가능 시간을 충분히 확보했다는 점**
+
+Blue/Green Deployment는 Downtime 최소화 측면에서 장점이 있지만, 이번 작업에서는 별도의 서비스 점검 시간을 확보하여 In-place 방식으로 진행할 수 있었습니다.
+
+따라서 추가적인 인스턴스 비용을 지불하며 Downtime 최소화를 위해 신규 환경을 구성하는 것보다 기존 Cluster에서 업그레이드를 진행하는 방식을 선택하였습니다.
+
+**세번째, 기존 운영 환경의 구성을 유지하면서 작업할 수 있다는 점**
+
+In-place Upgrade는 기존 DB Cluster를 대상으로 엔진 버전을 변경하므로 별도의 신규 운영 Cluster 구성이나 Endpoint 전환 작업을 최소화할 수 있습니다.
+
+또한 운영 적용 이전에 개발·검증 환경에서 사전 검토를 진행하였고, 업그레이드 이전 Snapshot을 생성하여 문제 발생 시 복원할 수 있도록 복구 방안을 수립하였습니다.
+
+결과적으로 **Minor Version Upgrade, 확보된 서비스 점검 시간, 기존 환경 유지 및 Snapshot 기반 복구 정책**을 고려하여 In-place Upgrade 방식으로 진행하였습니다.
+
+다만 In-place Upgrade가 다른 방식보다 항상 안전하거나 적합하다는 의미는 아닙니다. 서비스 중단이 허용되지 않는 환경이라면 Blue/Green Deployment 등 다른 방식을 우선 검토할 필요가 있습니다.
+
+### 4.3 운영 환경 업그레이드
+
+운영 환경에서는 사전에 확보한 서비스 점검 시간에 맞춰 In-place Upgrade를 진행하였습니다.
 
 일반적인 작업 절차는 다음과 같습니다.
 
 1.  업그레이드 대상 Cluster 및 Engine Version 확인
-2.  Parameter Group 및 백업 상태 점검
+2.  Parameter Group과 Snapshot 상태 점검
 3.  AWS RDS Console에서 목표 엔진 버전 선택
-4.  서비스 점검 시간에 맞춰 업그레이드 진행
+4.  서비스 점검 시간에 업그레이드 진행
 5.  Cluster 및 DB Instance 상태 확인
 6.  애플리케이션 연결 및 주요 기능 점검
 
-AWS Console에서는 **RDS → Databases → 대상 DB Cluster → Modify** 메뉴에서 엔진 버전을 변경할 수 있습니다.
+AWS Console에서는 **RDS → Databases → 대상 DB Cluster → Modify** 메뉴를 통해 엔진 버전을 변경할 수 있습니다.
 
 AWS CLI에서도 다음과 같이 변경할 수 있습니다.
 
@@ -118,7 +166,7 @@ aws rds modify-db-cluster \
   --apply-immediately
 ```
 
-위 명령어는 업그레이드 방법을 설명하기 위한 예시이며, 실제 작업 이력을 의미하지 않습니다.
+위 명령어는 업그레이드 방법을 설명하기 위한 예시이며 실제 작업 이력을 의미하지 않습니다.
 
 \--apply-immediately 옵션은 변경 사항을 즉시 적용하므로 운영 환경에서는 서비스 영향도를 확인한 후 사용해야 합니다.
 
@@ -211,3 +259,5 @@ AWS 관리형 Database는 엔진 업그레이드 절차를 비교적 간편하�
 *   [AWS - Aurora MySQL 3.04.4 Release Notes](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraMySQLReleaseNotes/AuroraMySQL.Updates.3044.html)
 *   [AWS - Aurora MySQL 3.10.3 Release Notes](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraMySQLReleaseNotes/AuroraMySQL.Updates.3103.html)
 *   [AWS - Aurora MySQL Minor Version Upgrade](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html)
+*   [AWS - Aurora Blue/Green Deployments](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html)
+*   [AWS - Restoring from a DB Cluster Snapshot](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-restore-snapshot.html)

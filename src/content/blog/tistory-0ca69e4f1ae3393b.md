@@ -10,7 +10,7 @@ description: "안녕하세요. 오늘은 AWS Aurora MySQL 환경에서의 Redaer
 
 이전에 작성했던, 일반 MySQL과 Aurora MySQL의 차이점을 참고하면 더욱 이해하기에 쉬울 것 같아 첨부합니다. 
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/AWS-AWS-RDS-MySQL-vs-AWS-Aurora-MySQL)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/AWS-AWS-RDS-MySQL-vs-AWS-Aurora-MySQL)
 
 ### 개요
 

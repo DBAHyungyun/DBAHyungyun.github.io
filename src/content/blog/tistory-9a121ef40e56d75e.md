@@ -36,7 +36,7 @@ MSSQL DBA로 지원하여 면접을 보고 왔는데, 제대로 답변을 하지
 
 오늘은 파일 공유 감시 구성으로 쿼럼을 구성해 보겠습니다. 서버 구성은 일전에 구성했던 MSSQL Always On 을 참고해주세요. 
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-3)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-3)
 
 * * *
 

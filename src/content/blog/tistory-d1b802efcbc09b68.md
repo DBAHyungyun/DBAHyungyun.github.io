@@ -3,14 +3,14 @@ title: "[PostgreSQL] PostgreSQL 기본 아키텍처 - 2"
 date: "2026-10-20T07:31:03.000Z"
 category: "Database | SQL | OS/PostgreSQL"
 source: "https://hyungyun.tistory.com/entry/PostgreSQL-PostgreSQL-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-2"
-description: "안녕하세요. 오늘은 지난 포스팅에 이어서 PostgreSQL의 기본 아키텍처를 공부하고, 정리해보려고 합니다. 지난 포스팅과 함께 보면 좋을 듯하여 첨부합니다. [PostgreSQL] PostgreSQL 기본 아키텍처 - 1 안녕하세"
+description: "안녕하세요. 오늘은 지난 포스팅에 이어서 PostgreSQL의 기본 아키텍처를 공부하고, 정리해보려고 합니다. 지난 포스팅과 함께 보면 좋을 듯하여 첨부합니다. 지난번에는 WAL Buffer에 대한 간략한 개념을 공부했는데요. 이번에"
 ---
 
 안녕하세요. 오늘은 지난 포스팅에 이어서 PostgreSQL의 기본 아키텍처를 공부하고, 정리해보려고 합니다.
 
 지난 포스팅과 함께 보면 좋을 듯하여 첨부합니다.
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/PostgreSQL-PostgreSQL-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/PostgreSQL-PostgreSQL-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
 
 지난번에는 WAL Buffer에 대한 간략한 개념을 공부했는데요.
 
@@ -40,7 +40,7 @@ WAL Buffer는 메모리이기 때문에, 여기에 기록이 들어갔다는 사
 
 아래 공식문서를 함께 참고하면 좋을 것 같아서 첨부합니다.
 
- [참고 자료 · www.postgresql.org](https://www.postgresql.org/docs/16/runtime-config-wal.html)
+[참고 자료 · www.postgresql.org](https://www.postgresql.org/docs/16/runtime-config-wal.html)
 
 ### UPDATE 실행시 내부 동작 방식
 

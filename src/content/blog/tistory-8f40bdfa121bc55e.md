@@ -10,7 +10,7 @@ description: "이번에는,MySQL의 Redo Log, Binary Log의 심화 내용과 아
 
 아래는 이전에 작성했던 MySQL 아키텍처의 간단한 정리와 Buffer Pool, Redo Log의 개념이 기재되어 있습니다. 참고해주세요.
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
 
 * * *
 

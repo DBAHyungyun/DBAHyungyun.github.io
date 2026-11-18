@@ -62,7 +62,7 @@ CREATE INDEX
 
 이전에 작성했던 게시글을 참고하면, Plan 조회 방법을 알 수 있습니다.
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B3%BC-%EC%98%B5%ED%8B%B0%EB%A7%88%EC%9D%B4%EC%A0%80)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B3%BC-%EC%98%B5%ED%8B%B0%EB%A7%88%EC%9D%B4%EC%A0%80)
 
 해당 방법으로 WHERE 조건에 NAME 을 추가하여 조회한 결과 INDEX RANGE SCAN 을 진행하며 Cost 가 2 발생합니다.
 

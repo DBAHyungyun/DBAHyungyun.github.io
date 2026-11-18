@@ -18,7 +18,7 @@ description: "오늘은 Always On 설치 테스트를 진행해보려고 합니�
 
 [https://hyungyun.tistory.com/entry/MSSQL-Always-On-%EA%B5%AC%EC%84%B1%EC%9D%B4%EB%9E%80](https://hyungyun.tistory.com/entry/MSSQL-Always-On-%EA%B5%AC%EC%84%B1%EC%9D%B4%EB%9E%80)
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MSSQL-Always-On-%EA%B5%AC%EC%84%B1%EC%9D%B4%EB%9E%80)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MSSQL-Always-On-%EA%B5%AC%EC%84%B1%EC%9D%B4%EB%9E%80)
 
 * * *
 

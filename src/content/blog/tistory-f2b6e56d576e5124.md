@@ -12,11 +12,11 @@ description: "요즘 여러가지 Cloud 기반 데이터베이스의 사용이 �
 
 참고 : [https://learn.microsoft.com/ko-kr/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?view=azuresql](https://learn.microsoft.com/ko-kr/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?view=azuresql)
 
- [참고 자료 · learn.microsoft.com](https://learn.microsoft.com/ko-kr/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?view=azuresql)
+[참고 자료 · learn.microsoft.com](https://learn.microsoft.com/ko-kr/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?view=azuresql)
 
 참고2 : [https://learn.microsoft.com/ko-kr/azure/azure-sql/database/sql-database-paas-overview?view=azuresql](https://learn.microsoft.com/ko-kr/azure/azure-sql/database/sql-database-paas-overview?view=azuresql)
 
- [참고 자료 · learn.microsoft.com](https://learn.microsoft.com/ko-kr/azure/azure-sql/database/sql-database-paas-overview?view=azuresql)
+[참고 자료 · learn.microsoft.com](https://learn.microsoft.com/ko-kr/azure/azure-sql/database/sql-database-paas-overview?view=azuresql)
 
 * * *
 

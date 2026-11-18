@@ -3,20 +3,20 @@ title: "[MySQL] 동시성 제어 MVCC 란 무엇인가?"
 date: "2026-03-03T05:10:29.000Z"
 category: "Database | SQL | OS/MySQL | Maria"
 source: "https://hyungyun.tistory.com/entry/MySQL-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%A0%9C%EC%96%B4-MVCC-%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80"
-description: "안녕하세요. 오늘은 데이터베이스에서 중요한 성능에 관련된 동시성 제어 (MVCC)에 관하여 공부해보고자 합니다. 이전에 포스팅 했던 MySQL Undo 를 참고하면 이해하기 더 용이할 것 같아 첨부합니다. 봐주시면 감사하겠습니다. ["
+description: "안녕하세요. 오늘은 데이터베이스에서 중요한 성능에 관련된 동시성 제어 (MVCC)에 관하여 공부해보고자 합니다. 이전에 포스팅 했던 MySQL Undo 를 참고하면 이해하기 더 용이할 것 같아 첨부합니다. 봐주시면 감사하겠습니다. 참"
 ---
 
 안녕하세요. 오늘은 데이터베이스에서 중요한 성능에 관련된 동시성 제어 (MVCC)에 관하여 공부해보고자 합니다.
 
 이전에 포스팅 했던 MySQL Undo 를 참고하면 이해하기 더 용이할 것 같아 첨부합니다. 봐주시면 감사하겠습니다.
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-Undo-Log%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-Undo-Log%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
 
 참고 서적 : Real MySQL, MVCC, 트랜잭션 격리 수준 공식 문서
 
- [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-multi-versioning.html)
+[참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-multi-versioning.html)
 
- [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-isolation-levels.html)
+[참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-isolation-levels.html)
 
 * * *
 

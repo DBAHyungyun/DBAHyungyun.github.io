@@ -3,14 +3,14 @@ title: "MS SQL Always On 설치 가이드 - 2"
 date: "2025-01-21T00:27:44.000Z"
 category: "Database | SQL | OS/MS-SQL"
 source: "https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-2"
-description: "MS SQL Always On 설치 가이드 - 1 https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1 M"
+description: "MS SQL Always On 설치 가이드 - 1 https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1 오"
 ---
 
 MS SQL Always On 설치 가이드 - 1 
 
 [https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1)
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MS-SQL-Always-On-%EC%84%A4%EC%B9%98-%EA%B0%80%EC%9D%B4%EB%93%9C-1)
 
 오늘은 도메인 설정 및 확인 이후 윈도우 클러스터 구성을 진행해보겠습니다.
 

@@ -152,4 +152,4 @@ Target DB의 DMS 계정 권한을 수정한 이후에는 Replication Task를 재
 
 AWS 공식 문서 — Using a MySQL-compatible database as a target for AWS Database Migration Service
 
- [AWS DMS 공식 문서 · MySQL 호환 Target](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Target.MySQL.html#CHAP_Target.MySQL.Prerequisites)
+[AWS DMS 공식 문서 · MySQL 호환 Target](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Target.MySQL.html#CHAP_Target.MySQL.Prerequisites)

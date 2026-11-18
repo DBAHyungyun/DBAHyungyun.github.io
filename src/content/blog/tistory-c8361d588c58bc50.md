@@ -10,7 +10,7 @@ description: "오늘은 AWS의 Migration 을 담당하는 복제 인스턴스의
 
 아래는 예전에 작성했던 DMS 복제 인스턴스에 관한 글입니다. 참고하셔서 복제 인스턴스가 어떤것인지 사전에 알면 좋을 것 같아 첨부합니다. 
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/AWS-DMS-%EB%B3%B5%EC%A0%9C-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EB%B0%8F-%ED%83%9C%EC%8A%A4%ED%81%AC-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/AWS-DMS-%EB%B3%B5%EC%A0%9C-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EB%B0%8F-%ED%83%9C%EC%8A%A4%ED%81%AC-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95)
 
 * * *
 
@@ -34,7 +34,7 @@ DMS 복제 인스턴스는 이전 글에서 어떤 용도인지 확인했습니�
 
 아래는 AWS 의 DMS 지표 공식문서입니다. Memory 에 관한 지표 뿐 아니라, IOPS, Latency, Throughput 등 DMS 복제 인스턴스 성능에 주요한 지표들이 나와있으니 운영에 참고하면 좋을 것 같습니다. 
 
- [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Monitoring.html#CHAP_Monitoring.Metrics)
+[참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Monitoring.html#CHAP_Monitoring.Metrics)
 
 ### OOM 현상이란?
 

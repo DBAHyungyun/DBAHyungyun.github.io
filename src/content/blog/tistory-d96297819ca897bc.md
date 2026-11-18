@@ -42,9 +42,9 @@ DMS 태스크 : Aurora MySQL to Aurora MySQL (동종 DB간 DMS)
 
 DMS 태스크를 실행할 때에는 여러가지 사전 준비 사항이 필요합니다. 사전 준비 사항은 AWS Document에 잘 정리 되어 있으니 정독하시어 반드시 적용해야 합니다. (Source 준비 사항과 Target 준비 사항이 모두 나와있는 Docs 입니다.)
 
- [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Source.MySQL.html)
+[참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Source.MySQL.html)
 
- [AWS DMS 공식 문서 · MySQL 호환 Target](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Target.MySQL.html)
+[AWS DMS 공식 문서 · MySQL 호환 Target](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Target.MySQL.html)
 
 ## AWS DMS 태스크 연동 방법
 
@@ -108,7 +108,7 @@ DMS 태스크 생성
 
 태스크를 설정하는 데에는 여러가지 편집 모드를 지원하는데 관련된 내용을 다 설명하기에는 양이 방대하여 AWS 공식 링크를 첨부하니 참고함이 좋을 것 같다. (참고로 데이터 마이그레이션을 통해 검증 옵션을 선택하면 작업 시간이 굉장히 증가해서 잘 사용하지 않는 옵션이다.)
 
- [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Tasks.Creating.html)
+[참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/dms/latest/userguide/CHAP_Tasks.Creating.html)
 
 테이블 매핑을 활용하여, 어떤 스키마의 테이블을 마이그레이션 할지 정해준다. 저는 mig\_t 라는 스키마의 모든 테이블을 마이그레이션 하는 것으로 설정하였습니다. 
 

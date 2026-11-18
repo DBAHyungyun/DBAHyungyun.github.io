@@ -12,7 +12,7 @@ description: "안녕하세요. 이번에는 MySQL에서 백업과 데이터 보�
 
 아래 링크는 MySQL 공식 Community 문서입니다. 참고하면 좋을 것 같아 첨부하였습니다. 
 
- [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-undo-logs.html)
+[참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/innodb-undo-logs.html)
 
 * * *
 

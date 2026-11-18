@@ -10,9 +10,9 @@ description: "안녕하세요. 오늘은 MySQL 과 MariaDB 에서 성능으로 �
 
 성능에 중요한 부분을 차지하는 만큼, 이전의 아키텍처에서 간략하게 공부 해보았지만 심화하여 공부하면 추후에도 좋을것이라 생각해 기록하게 되었습니다. 
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-1)
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-2)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/MySQL-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-2)
 
 간략한 아키텍처 내용은 위 링크에 있으니, 한번 보시는것도 좋을 것 같습니다.
 

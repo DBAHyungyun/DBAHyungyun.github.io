@@ -12,9 +12,9 @@ description: "이번에는 MySQL 에서 성능정보를 파악하고, 확인하�
 
 아래는 Information\_schema, Performance\_schema 에 대한 공식 문서이고 아래 정리하는 내용들과 참고해서 보면 좋을 것 같습니다. 
 
- [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/9.6/en/performance-schema.html)
+[참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/9.6/en/performance-schema.html)
 
- [참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/information-schema.html)
+[참고 자료 · dev.mysql.com](https://dev.mysql.com/doc/refman/8.4/en/information-schema.html)
 
 * * *
 

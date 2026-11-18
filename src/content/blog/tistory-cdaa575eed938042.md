@@ -12,7 +12,7 @@ description: "오늘은 지난번 오라클 아키텍쳐 - 1 에 이어서, 조�
 
 [https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-1](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-1)
 
- [참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-1)
+[참고 자료 · hyungyun.tistory.com](https://hyungyun.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-1)
 
 * * *
 

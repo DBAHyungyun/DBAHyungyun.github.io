@@ -59,7 +59,7 @@ Redshift 기본 아키텍처
 
 아래 분산키를 설정하는 분산 스타일에 대한 AWS 공식 문서입니다. 참고하면 좋을 것 같아 첨부합니다. 
 
- [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/c_choosing_dist_sort.html)
+[참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/c_choosing_dist_sort.html)
 
 대량 병렬 처리 (MPP)
 
@@ -82,7 +82,7 @@ Redshift는 제출된 SQL 쿼리를 구문 분석기와 쿼리 옵티마이저�
 
 자세한 쿼리 실행 및 워크 플로우는 아래 링크를 참고하면 좋을 것 같습니다.
 
- [참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/prescriptive-guidance/latest/query-lifecycle-redshift/query-processing.html)
+[참고 자료 · docs.aws.amazon.com](https://docs.aws.amazon.com/ko_kr/prescriptive-guidance/latest/query-lifecycle-redshift/query-processing.html)
 
 ### Redshift 의 장단점
 
