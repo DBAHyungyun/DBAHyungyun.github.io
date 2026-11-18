@@ -12,7 +12,7 @@ on:
         type: boolean
         default: true
       sync:
-        description: '티스토리 신규 공개 글 수집'
+        description: '티스토리 공개 글 동기화'
         type: boolean
         default: true
 permissions:
@@ -43,9 +43,9 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Import new public Tistory posts
+      - name: Sync public Tistory posts
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.sync)
-        run: node scripts/import-tistory.mjs --new-only
+        run: node scripts/import-tistory.mjs --sync
       - name: Confirm removed or private source posts
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.sync)
         run: node scripts/reconcile-source.mjs
@@ -58,7 +58,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add src/content/blog public/media migration/url-map.json migration/assets.json migration/report.json migration/source-state.json migration/removed-posts.json
           if ! git diff --cached --quiet; then
-            git commit -m 'Sync new public posts from Tistory'
+            git commit -m 'Sync public posts from Tistory'
             git push origin HEAD:main
           fi
       - uses: actions/upload-pages-artifact@v3

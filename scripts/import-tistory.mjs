@@ -8,7 +8,8 @@ import {simplifyLinkPreviews} from './link-previews.mjs';
 import {classify} from './reconcile-source.mjs';
 const origin='https://hyungyun.tistory.com';
 const parser=new XMLParser({ignoreAttributes:false});
-const incremental=process.argv.includes('--new-only');
+const updateExisting = process.argv.includes('--sync');
+const incremental = updateExisting || process.argv.includes('--new-only');
 const readJSON=async(file,fallback)=>{try{return JSON.parse(await fs.readFile(file,'utf8'));}catch(e){if(e.code==='ENOENT')return fallback;throw e;}};
 for(const p of ['backup/pages','public/media','src/content/blog','migration']) await fs.mkdir(p,{recursive:true});
 async function fetchText(url){const r=await fetch(url,{signal:AbortSignal.timeout(45000)});const html=await r.text();if(!r.ok){const e=Error(`${r.status} ${url}`);e.response={status:r.status,url:r.url,html};throw e;}return html;}
@@ -23,17 +24,31 @@ const rows=incremental?await readJSON('migration/url-map.json',[]):[],failures=[
 const initialCount=rows.length;
 const assets=new Map(Object.entries(incremental?await readJSON('migration/assets.json',{}):{}));
 const normalize=url=>decodeURI(url).replace(/\/$/,'');
-const known=new Set(rows.flatMap(r=>[r.source,r.numericSource].filter(Boolean).map(normalize)));
+const known = new Map();
+function indexRow(row, index) {
+  for (const url of [row.source, row.numericSource].filter(Boolean)) known.set(normalize(url), index);
+}
+rows.forEach(indexRow);
+const processed = new Set();
+let updated = 0;
 for(const [i,url] of urls.entries()){
- if(incremental&&known.has(normalize(url)))continue;
+ let existingIndex = known.get(normalize(url));
+ if (existingIndex !== undefined && (!updateExisting || processed.has(existingIndex))) continue;
  try{
  const html=await fetchText(url);
  if(incremental&&classify({status:200,html,url},{})==='unavailable')continue;
  const $=load(html);const article=$('.contents_style').first().length?$('.contents_style').first():$('.tt_article_useless_p_margin').first();
  if(!article.length)throw Error('본문 selector 확인 필요');
  const sameEntry=html.match(/"entryId":"(\d+)"/)?.[1];
- if(incremental&&sameEntry&&known.has(origin+'/'+sameEntry))continue;
- const id=url.match(/\/(\d+)\/?$/)?.[1]||crypto.createHash('sha256').update(url).digest('hex').slice(0,16);
+ const numericIndex = sameEntry ? known.get(origin + '/' + sameEntry) : undefined;
+ if (existingIndex !== undefined && rows[existingIndex].numericSource &&
+     rows[existingIndex].numericSource !== origin + '/' + sameEntry) {
+   throw Error('원문 게시글 ID 불일치');
+ }
+ existingIndex ??= numericIndex;
+ if (existingIndex !== undefined && (!updateExisting || processed.has(existingIndex))) continue;
+ const existing = rows[existingIndex];
+ const id=existing?.id.slice('tistory-'.length)||url.match(/\/(\d+)\/?$/)?.[1]||crypto.createHash('sha256').update(url).digest('hex').slice(0,16);
  await fs.writeFile(`backup/pages/${id}.html`,html);
  const f=feed.find(x=>x.link===url);const title=$('meta[property="og:title"]').attr('content')||f?.title||$('title').text();
  const rawDate=$('meta[property="article:published_time"]').attr('content')||f?.pubDate||$('time[datetime]').attr('datetime');
@@ -53,19 +68,40 @@ for(const [i,url] of urls.entries()){
  const category=JSON.parse(html.match(/"categoryName":("(?:\\.|[^"\\])*")/)?.[1]||'""')||f?.category||$('.category').first().text().trim()||'Database';
  const excerpt=article.clone();excerpt.find('figure[data-ke-type="opengraph"]').remove();
  const description=excerpt.text().replace(/\s+/g,' ').trim().slice(0,130);
- const data={title,date:new Date(rawDate).toISOString(),category,source:url,description};
- const md=td.turndown(simplifyLinkPreviews(article.html()));await fs.writeFile(`src/content/blog/tistory-${id}.md`,'---\n'+Object.entries(data).map(([k,v])=>`${k}: ${JSON.stringify(v)}`).join('\n')+'\n---\n\n'+md,incremental?{flag:'wx'}:{});
- const entryId=html.match(/"entryId":"(\d+)"/)?.[1];
- rows.push({...data,id:`tistory-${id}`,newPath:`/blog/tistory-${id}/`,numericSource:entryId?`${origin}/${entryId}`:null,images:article.find('img').length,codeBlocks:article.find('pre').length,codeTexts:article.find('pre').map((_,e)=>$(e).text()).get(),status:incremental?'auto-imported-public-source':'imported-review-required'});
- known.add(normalize(url));if(entryId)known.add(origin+'/'+entryId);
+ const data={title,date:existing?.date ?? new Date(rawDate).toISOString(),category,source:existing?.source ?? url,description};
+ const md = td.turndown(simplifyLinkPreviews(article.html()));
+ const file = `src/content/blog/tistory-${id}.md`;
+ const content = '---\n' + Object.entries(data).map(([key, value]) => `${key}: ${JSON.stringify(value)}`).join('\n') + '\n---\n\n' + md;
+ const row = {
+   ...existing, ...data, id: `tistory-${id}`, newPath: existing?.newPath ?? `/blog/tistory-${id}/`,
+   numericSource: sameEntry ? `${origin}/${sameEntry}` : (existing?.numericSource ?? null),
+   images: article.find('img').length, codeBlocks: article.find('pre').length,
+   codeTexts: article.find('pre').map((_, element) => $(element).text()).get(),
+   status: existing?.status ?? (incremental ? 'auto-imported-public-source' : 'imported-review-required'),
+ };
+ if (existing) {
+   const previous = await fs.readFile(file, 'utf8');
+   if (previous.replace(/\r\n/g, '\n').trimEnd() !== content.trimEnd()) {
+     await fs.writeFile(file, content);
+     rows[existingIndex] = row;
+     indexRow(row, existingIndex);
+     updated++;
+   }
+   processed.add(existingIndex);
+ } else {
+   await fs.writeFile(file, content, incremental ? {flag: 'wx'} : {});
+   indexRow(row, rows.length);
+   processed.add(rows.length);
+   rows.push(row);
+ }
  }catch(e){if(incremental&&e.response&&classify(e.response,{})==='unavailable')continue;failures.push({url,error:e.message});}
  if((i+1)%10===0)console.log(`${i+1}/${urls.length}`);
  await new Promise(r=>setTimeout(r,200));
 }
-if(!incremental||rows.length>initialCount||failures.length){
+if(!incremental||rows.length>initialCount||updated||failures.length){
 await fs.writeFile('migration/url-map.json',JSON.stringify(rows,null,2));
-await fs.writeFile('migration/report.json',JSON.stringify({date:new Date().toISOString(),discovered:urls.length,imported:rows.length,assets:assets.size,failures,complete:failures.length===0},null,2));
+await fs.writeFile('migration/report.json',JSON.stringify({date:new Date().toISOString(),discovered:urls.length,imported:rows.length,updated,assets:assets.size,failures,complete:failures.length===0},null,2));
 await fs.writeFile('migration/assets.json',JSON.stringify(Object.fromEntries(assets),null,2));
 }
 if(failures.length)process.exitCode=1;
-console.log({discovered:urls.length,imported:rows.length,assets:assets.size,failures:failures.length});
+console.log({discovered:urls.length,imported:rows.length,updated,assets:assets.size,failures:failures.length});
