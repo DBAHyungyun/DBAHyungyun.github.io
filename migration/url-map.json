@@ -1058,5 +1058,24 @@
       "SELECT /*+ gather_plan_statistics */\n    ORDER_ID,\n    CUSTOMER_ID,\n    ORDER_MONTH\nFROM LAB_ORDERS\nWHERE CUSTOMER_ID = 100;"
     ],
     "status": "auto-imported-public-source"
+  },
+  {
+    "title": "[AWS] Aurora MySQL 3.04.X → 3.10.X 업그레이드 과정 및 고려사항",
+    "date": "2026-11-18T05:59:42.000Z",
+    "category": "Cloud/AWS",
+    "source": "https://hyungyun.tistory.com/entry/AWS-Aurora-MySQL-304X-%E2%86%92-310X-%EC%97%85%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%93%9C-%EA%B3%BC%EC%A0%95-%EB%B0%8F-%EA%B3%A0%EB%A0%A4%EC%82%AC%ED%95%AD",
+    "description": "안녕하세요. 오늘은 실제 운영 환경에서 진행했던 Amazon Aurora MySQL 엔진 버전 업그레이드 과정에 대해서 정리해보려고 합니다. 기존 Aurora MySQL 3.04 계열의 LTS(Long-Term Support) 지원 ",
+    "id": "tistory-b6fe974c7d0ae347",
+    "newPath": "/blog/tistory-b6fe974c7d0ae347/",
+    "numericSource": "https://hyungyun.tistory.com/73",
+    "images": 3,
+    "codeBlocks": 4,
+    "codeTexts": [
+      "# DB Cluster Parameter 조회\naws rds describe-db-cluster-parameters \\\n  --db-cluster-parameter-group-name <cluster-parameter-group-name>\n\n# DB Instance Parameter 조회\naws rds describe-db-parameters \\\n  --db-parameter-group-name <db-parameter-group-name>",
+      "aws rds modify-db-cluster \\\n  --db-cluster-identifier <cluster-identifier> \\\n  --engine-version 8.0.mysql_aurora.3.10.3 \\\n  --apply-immediately",
+      "mysqlsh --user=[user명] --host=[엔드포인트 주소] --port=[DB Port] -- util check-for-server-upgrade --target-version=[업그레이드 버전]",
+      "SELECT\n    AURORA_VERSION() AS aurora_version,\n    VERSION() AS mysql_version;"
+    ],
+    "status": "auto-imported-public-source"
   }
 ]
