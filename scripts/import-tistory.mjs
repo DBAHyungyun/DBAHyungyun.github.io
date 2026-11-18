@@ -29,6 +29,20 @@ function indexRow(row, index) {
   for (const url of [row.source, row.numericSource].filter(Boolean)) known.set(normalize(url), index);
 }
 rows.forEach(indexRow);
+
+if (updateExisting) {
+  const discovered = new Set(urls.map(normalize));
+  for (const row of rows) {
+    const candidates = [row.numericSource, row.source].filter(Boolean);
+    if (candidates.some(url => discovered.has(normalize(url)))) continue;
+
+    const source = candidates.find(url => /^https:\/\/hyungyun\.tistory\.com\/(\d+|entry\/[^?#]+)\/?$/.test(url));
+    if (!source) continue;
+
+    urls.push(source);
+    discovered.add(normalize(source));
+  }
+}
 const processed = new Set();
 let updated = 0;
 for(const [i,url] of urls.entries()){
