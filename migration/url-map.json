@@ -1077,5 +1077,35 @@
       "SELECT\n    AURORA_VERSION() AS aurora_version,\n    VERSION() AS mysql_version;"
     ],
     "status": "auto-imported-public-source"
+  },
+  {
+    "title": "[MySQL] Aurora MySQL Deadlock 발생 원리 및 Performance Schema를 활용한 오류 SQL 추적",
+    "date": "2026-11-26T05:00:56.000Z",
+    "category": "Database | SQL | OS/MySQL | Maria",
+    "source": "https://hyungyun.tistory.com/entry/MySQL-Aurora-MySQL-Deadlock-%EB%B0%9C%EC%83%9D-%EC%9B%90%EB%A6%AC-%EB%B0%8F-Performance-Schema%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%98%A4%EB%A5%98-SQL-%EC%B6%94%EC%A0%81",
+    "description": "안녕하세요. 이번에는 Aurora MySQL 환경에서 Deadlock(교착 상태)을 직접 발생시키고, performance_schema.events_statements_history_long을 활용해 오류 SQL을 확인하는 과정을 정",
+    "id": "tistory-8353e6ebfddbefec",
+    "newPath": "/blog/tistory-8353e6ebfddbefec/",
+    "numericSource": "https://hyungyun.tistory.com/74",
+    "images": 6,
+    "codeBlocks": 15,
+    "codeTexts": [
+      "Session A                    Session B\n─────────                    ─────────\nID = 1 X Lock 보유           ID = 2 X Lock 보유\n        ↓                            ↓\nID = 2 UPDATE 시도           ID = 1 UPDATE 시도\n        ↓                            ↓\nSession B 대기               Session A 대기\n\n        ↔ DEADLOCK 발생",
+      "SHOW VARIABLES\nWHERE Variable_name IN (\n    'performance_schema',\n    'performance_schema_events_statements_history_long_size',\n    'innodb_deadlock_detect'\n);",
+      "SELECT NAME, ENABLED\nFROM performance_schema.setup_consumers\nWHERE NAME IN (\n    'events_statements_current',\n    'events_statements_history_long'\n);",
+      "UPDATE performance_schema.setup_consumers\nSET ENABLED = 'YES'\nWHERE NAME = 'events_statements_history_long';",
+      "USE bg_test;\n\nCREATE TABLE ps_deadlock_demo (\n    id INT NOT NULL,\n    account_name VARCHAR(50) NOT NULL,\n    balance INT NOT NULL,\n    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP\n               ON UPDATE CURRENT_TIMESTAMP,\n    PRIMARY KEY (id)\n) ENGINE = InnoDB;\n\nINSERT INTO ps_deadlock_demo\n    (id, account_name, balance)\nVALUES\n    (1, 'ACCOUNT_A', 1000),\n    (2, 'ACCOUNT_B', 2000);\n\nCOMMIT;",
+      "SELECT CONNECTION_ID(), @@autocommit;",
+      "START TRANSACTION;\n\nUPDATE bg_test.ps_deadlock_demo\nSET balance = balance + 100\nWHERE id = 1;",
+      "START TRANSACTION;\n\nUPDATE bg_test.ps_deadlock_demo\nSET balance = balance + 200\nWHERE id = 2;",
+      "UPDATE bg_test.ps_deadlock_demo\nSET balance = balance + 100\nWHERE id = 2;",
+      "UPDATE bg_test.ps_deadlock_demo\nSET balance = balance + 200\nWHERE id = 1;",
+      "SQL Error [1213] [40001]:\nDeadlock found when trying to get lock;\ntry restarting transaction",
+      "SELECT\n    THREAD_ID,\n    EVENT_ID,\n    MYSQL_ERRNO,\n    RETURNED_SQLSTATE,\n    MESSAGE_TEXT,\n    ERRORS,\n    SQL_TEXT\nFROM performance_schema.events_statements_history_long\nWHERE MYSQL_ERRNO = 1213\nORDER BY TIMER_START DESC\nLIMIT 20;",
+      "SELECT COUNT(*)\nFROM performance_schema.events_statements_history_long;",
+      "최대 보관량: 10,000건\n        ↓\n새로운 Statement 기록\n        ↓\n가장 오래된 이벤트 제거\n        ↓\n새로운 이벤트 저장\n\n총 10,000건 유지",
+      "SHOW ENGINE INNODB STATUS;"
+    ],
+    "status": "auto-imported-public-source"
   }
 ]
