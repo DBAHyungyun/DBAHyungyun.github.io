@@ -1087,7 +1087,7 @@
     "id": "tistory-8353e6ebfddbefec",
     "newPath": "/blog/tistory-8353e6ebfddbefec/",
     "numericSource": "https://hyungyun.tistory.com/74",
-    "images": 6,
+    "images": 7,
     "codeBlocks": 15,
     "codeTexts": [
       "Session A                    Session B\n─────────                    ─────────\nID = 1 X Lock 보유           ID = 2 X Lock 보유\n        ↓                            ↓\nID = 2 UPDATE 시도           ID = 1 UPDATE 시도\n        ↓                            ↓\nSession B 대기               Session A 대기\n\n        ↔ DEADLOCK 발생",

@@ -181,6 +181,10 @@ try restarting transaction
 
 ![](__MEDIA__/fbf3096aba44812e0fd6996116da3a89461050008fb7a4dd5dcf642ec3941711.png)
 
+CloudWatch의 DeadLocks 지표에서도 정상적으로 DeadLock이 발생 된 모습을 볼 수 있습니다. 
+
+![](__MEDIA__/cb05bf0bd7eabf20353792e4b2656313036a9af79195e80a8aee164895f55c2f.png)
+
 InnoDB가 Deadlock을 감지하고 한 트랜잭션을 Rollback하면서 교착 상태가 해소된 것입니다.
 
 테스트 종료 후에는 두 세션에서 ROLLBACK을 수행하여 남아 있는 트랜잭션과 잠금을 정리했습니다.
