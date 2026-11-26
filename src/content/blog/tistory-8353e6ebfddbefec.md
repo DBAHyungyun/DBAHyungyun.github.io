@@ -3,10 +3,10 @@ title: "[MySQL] Aurora MySQL Deadlock 발생 원리 및 Performance Schema를 �
 date: "2026-11-26T05:00:56.000Z"
 category: "Database | SQL | OS/MySQL | Maria"
 source: "https://hyungyun.tistory.com/entry/MySQL-Aurora-MySQL-Deadlock-%EB%B0%9C%EC%83%9D-%EC%9B%90%EB%A6%AC-%EB%B0%8F-Performance-Schema%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%98%A4%EB%A5%98-SQL-%EC%B6%94%EC%A0%81"
-description: "안녕하세요. 이번에는 Aurora MySQL 환경에서 Deadlock(교착 상태)을 직접 발생시키고, performance_schema.events_statements_history_long을 활용해 오류 SQL을 확인하는 과정을 정"
+description: "안녕하세요. 이번에는 Aurora MySQL 환경에서 Deadlock(교착 상태)을 직접 발생시키고, performance_schema.events_statements_history_long 을 활용해 오류 SQL을 확인하는 과정을 "
 ---
 
-안녕하세요. 이번에는 Aurora MySQL 환경에서 **Deadlock(교착 상태)을 직접 발생시키고,** **performance\_schema.events\_statements\_history\_long****을 활용해 오류 SQL을 확인하는 과정**을 정리해 보겠습니다.
+안녕하세요. 이번에는 Aurora MySQL 환경에서 **Deadlock(교착 상태)을 직접 발생시키고,** **performance\_schema.events\_statements\_history\_long** **을 활용해 오류 SQL을 확인하는 과정**을 정리해 보겠습니다.
 
 일반적으로 Deadlock이 발생한 후에는 해당 SQL이 이미 종료되어 SHOW PROCESSLIST 등에서 확인되지 않을 수 있습니다.
 
@@ -109,7 +109,7 @@ COMMIT;
 
 초기 데이터는 다음과 같습니다.
 
-<table style="border-collapse: collapse; width: 100%; height: 44px;" border="1" data-ke-align="alignLeft"><tbody><tr><td style="width: 12.5581%;">ID</td><td style="width: 39.5349%;"><span>ACCOUNT_NAME</span></td><td style="width: 47.7907%;"><span>BALANCE</span></td></tr><tr style="height: 17px;"><td style="height: 17px; width: 12.5581%;"><span>1</span></td><td style="height: 17px; width: 39.5349%;"><span>ACCOUNT_A</span></td><td style="height: 17px; width: 47.7907%;"><span>1,000</span></td></tr><tr style="height: 17px;"><td style="height: 17px; width: 12.5581%;"><span>2</span></td><td style="height: 17px; width: 39.5349%;"><span>ACCOUNT_B</span></td><td style="height: 17px; width: 47.7907%;"><span>2,000</span></td></tr></tbody></table>
+<table style="border-collapse: collapse; width: 100.116%; height: 59px;" border="1" data-ke-align="alignLeft"><tbody><tr style="height: 25px;"><td style="width: 12.5581%; height: 25px;">ID</td><td style="width: 39.5349%; height: 25px;"><span>ACCOUNT_NAME</span></td><td style="width: 47.7907%; height: 25px;"><span>BALANCE</span></td></tr><tr style="height: 17px;"><td style="height: 17px; width: 12.5581%;"><span>1</span></td><td style="height: 17px; width: 39.5349%;"><span>ACCOUNT_A</span></td><td style="height: 17px; width: 47.7907%;"><span>1,000</span></td></tr><tr style="height: 17px;"><td style="height: 17px; width: 12.5581%;"><span>2</span></td><td style="height: 17px; width: 39.5349%;"><span>ACCOUNT_B</span></td><td style="height: 17px; width: 47.7907%;"><span>2,000</span></td></tr></tbody></table>
 
 ![](__MEDIA__/f62441eceef65a61e8262c8eacac368d85ba4b620758a76261dc39b1ad059bc5.png)
 
